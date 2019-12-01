@@ -83,8 +83,8 @@ namespace turbido1
                 Thread.Sleep(1000*Int32.Parse(textBoxTubeSwitchTime.Text));
                 //beep.Play();
                 //beep.Stop();
-                Thread.Sleep(1000);
                 core.relays[core.LEDPDSwitch[0]].TurnOn(core.LEDPDSwitch[1]);
+                Thread.Sleep(2000);
                 volts[i-1]=core.ODReader.StartSingleReadingWindow(5,"Volt")[i-1];
                 core.relays[core.LEDPDSwitch[0]].TurnOff(core.LEDPDSwitch[1]);
                 //gong.Play();

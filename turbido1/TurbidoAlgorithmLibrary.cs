@@ -50,8 +50,8 @@ namespace turbido1
         public char culture_set = 'A';
         private bool simulationMode = false;
         public Double assumedGrowthRate = 20; // doubling time in mins
-        double transferTime = 5;
-        double evacuationTime = 30;
+        double transferTime = 6;
+        double evacuationTime = 45;
         double fBleachTime = 23;
         double fWaterTime = 25;
         double bleachTime = 21;
@@ -60,10 +60,10 @@ namespace turbido1
         double dilutionTime = 8;
         double LBLowerThresold = 100;// ml
         double LBRefresh = 200;      // ml
-        double LBInitialFill = 500; // ml
+        double LBInitialFill = 400; // ml
         double bleachVolume = 200;   // ml
         double waterVolume = 400;    // ml
-        double fWaterVolume = 800;   // ml
+        double fWaterVolume = 1000;   // ml
         double fBleachVolume = 600;  // ml
         int waterMixTime = 60;   // secs
         int bleachMixTime = 10; // secs
@@ -245,6 +245,7 @@ namespace turbido1
                 }
             }
             core.DataCollector.Start();
+            core.ReinitializeODReader.Start();
             cycler.Start();
             recordOverThrTiming.Start();
             transfer_cycler.Start();
@@ -1169,12 +1170,12 @@ namespace turbido1
             core.logMain("[Main Washing Protocol A] Starting bleach washing.");
             BleachWashingProtocolA_worker(strength);
             // make media ready for next cycle
-            core.logMain("[Main Washing Protocol A] Making LB for next cycle.");
-            core.MakeLBA_worker(LBInitialFill);
-            //core.FillWaterIntoIBAUptoWeight_worker(500);
-            // debubble tubes, and fill with 20 ml media
-            core.logMain("[Main Washing Protocol A] Priming LB into tubes.");
-            core.FillTubeAsByScale_worker(dilutionTime*1.5);
+            //core.logMain("[Main Washing Protocol A] Making LB for next cycle.");
+            //core.MakeLBA_worker(LBInitialFill);
+            ////core.FillWaterIntoIBAUptoWeight_worker(500);
+            //// debubble tubes, and fill with 20 ml media
+            //core.logMain("[Main Washing Protocol A] Priming LB into tubes.");
+            //core.FillTubeAsByScale_worker(dilutionTime*1.5);
             core.logMain("[Main Washing Protocol A] Completed.");
 
             // mark phase
@@ -1200,13 +1201,13 @@ namespace turbido1
             // start cleaning protocol
             core.logMain("[Main Washing Protocol B] Starting bleach washing.");
             BleachWashingProtocolB_worker(strength);
-            // make media ready for next cycle
-            core.logMain("[Main Washing Protocol B] Making LB for next cycle.");
-            core.MakeLBB_worker(LBInitialFill);
-            // debubble tubes, and fill with 20 ml media
-            core.logMain("[Main Washing Protocol B] Priming LB into tubes.");
-            core.FillTubeBsByScale_worker(dilutionTime*1.5);
-            core.logMain("[Main Washing Protocol B] Completed.");
+            //// make media ready for next cycle
+            //core.logMain("[Main Washing Protocol B] Making LB for next cycle.");
+            //core.MakeLBB_worker(LBInitialFill);
+            //// debubble tubes, and fill with 20 ml media
+            //core.logMain("[Main Washing Protocol B] Priming LB into tubes.");
+            //core.FillTubeBsByScale_worker(dilutionTime*1.5);
+            //core.logMain("[Main Washing Protocol B] Completed.");
 
             // mark phase
             for (int i = 0; i < 4; i++)
@@ -1252,17 +1253,23 @@ namespace turbido1
                 core.logMain("[Bleach Washing Protocol A] Proceeding with bleach cycle " + (++cycle_count).ToString() + ".");
                 start = core.load_sensors.Read()[1];
                 core.FillTubeAsByScale_worker(activeCultures,bleach_time);
-                // Fill tubings with bleach
-                core.AltKeepLevelA_worker(0.75);
-                core.AltEvacuateTubeAs_worker(0.75);
                 // end if last cycle of bleach
                 end = core.load_sensors.Read()[1];
-                if (Math.Abs(start - end) <= 100)
+                if (Math.Abs(start - end) <= 50)
                 {
                     // Evacuate
                     core.AltEvacuateTubeAs_worker(evacuationTime);
                     break;
                 }
+
+                // wait 10 sec before filling tubes to ensure the 
+                // interior of the tubes are entirely bleached
+                Thread.Sleep(10000);
+
+                // Fill tubings with bleach
+                core.AltKeepLevelA_worker(0.75);
+                core.AltEvacuateTubeAs_worker(0.75);
+
                 // Sterilization time
                 Thread.Sleep(bleachCycleWaitTime*60*1000);
                 // Evacuate
@@ -1274,11 +1281,12 @@ namespace turbido1
             // Safe-wash the IB base
             core.logMain("[Bleach Washing Protocol A] Washing IB base with water...");
             core.FillWaterIntoIBAUptoWeight_worker(200);
-            start = core.load_sensors.Read()[1]; end = 0;
+            start = core.load_sensors.Read()[1]; end = -200;
             while (Math.Abs(start - end) > 50)
             {
                 start = core.load_sensors.Read()[1];
-                core.FillTubeAsByScale_worker(activeCultures, water_time);
+                //core.FillTubeAsByScale_worker(activeCultures, water_time);
+                core.FillTubeAs_worker(wasteTime);
                 Thread.Sleep(10000);
                 core.AltEvacuateTubeAs_worker(evacuationTime * 1.5);
                 end = core.load_sensors.Read()[1];
@@ -1299,6 +1307,7 @@ namespace turbido1
                 core.logMain("[Bleach Washing Protocol A] Proceeding with water cycle " + (++cycle_count).ToString() + ".");
                 start = core.load_sensors.Read()[1];
                 core.FillTubeAsByScale_worker(activeCultures,water_time);
+                //core.FillTubeAs(water_time);
                 Thread.Sleep(waterCycleWaitTime * 60 * 1000);
                 core.AltKeepLevelA_worker(core.keepingLevelTime);
                 core.AltEvacuateTubeAs_worker(evacuationTime);
@@ -1351,17 +1360,23 @@ namespace turbido1
                 core.logMain("[Bleach Washing Protocol B] Proceeding with bleach cycle " + (++cycle_count).ToString() + ".");
                 start = core.load_sensors.Read()[0];
                 core.FillTubeBsByScale_worker(activeCultures,bleach_time);
-                // Fill tubings with bleach
-                core.AltKeepLevelB_worker(0.75);
-                core.AltEvacuateTubeBs_worker(0.75);
                 end = core.load_sensors.Read()[0];
                 // end if last cycle of bleach
-                if (Math.Abs(start - end) <= 100)
+                if (Math.Abs(start - end) <= 50)
                 {
                     // Evacuate
                     core.AltEvacuateTubeBs_worker(evacuationTime);
                     break;
                 }
+
+                // wait 10 sec before filling tubes to ensure the 
+                // interior of the tubes are entirely bleached
+                Thread.Sleep(10000);
+
+                // Fill tubings with bleach
+                core.AltKeepLevelB_worker(0.75);
+                core.AltEvacuateTubeBs_worker(0.75);
+
                 // Sterilization time
                 Thread.Sleep(bleachCycleWaitTime*60*1000);
                 // Evacuate
@@ -1373,11 +1388,12 @@ namespace turbido1
             // Safe-wash the IB base
             core.logMain("[Bleach Washing Protocol B] Washing IB base with water...");
             core.FillWaterIntoIBBUptoWeight_worker(200);
-            start = core.load_sensors.Read()[0]; end = 0;
+            start = core.load_sensors.Read()[0]; end = -200;
             while (Math.Abs(start - end) > 50)
             {
                 start = core.load_sensors.Read()[0];
-                core.FillTubeBsByScale_worker(activeCultures,water_time);
+                //core.FillTubeBsByScale_worker(activeCultures,water_time);
+                core.FillTubeBs_worker(wasteTime);
                 Thread.Sleep(10000);
                 core.AltKeepLevelB_worker(core.keepingLevelTime);
                 core.AltEvacuateTubeBs_worker(evacuationTime);

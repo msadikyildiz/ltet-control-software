@@ -127,8 +127,8 @@ namespace turbido1
                     od[i] = (Single)(0.00001);
                 if (od[i] >= 1)
                     od[i] = 1;
-                if (od[i] <= -0.02)
-                    od[i] = -0.02;
+                //if (od[i] <= -0.2)
+                //    od[i] = -0.2;
                 if (Double.IsNaN(od[i]) || time<1)
                     return;
             }

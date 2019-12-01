@@ -61,6 +61,7 @@ namespace turbido1
         int safety_waiting = 1;
         int conc_media_pushback_time = 30; // secs
         public int depressurizationTime = 10; // secs
+        public int TubePressurizationTime = 2; // secs
         public int IBPressurizationTime = 15; // secs
         int dilutionMixTime = 200; // secs
         public int keepingLevelTime = 20; // secs
@@ -165,7 +166,7 @@ namespace turbido1
             
             ReinitializeODReader = new System.Timers.Timer(3600 * 1000);
             ReinitializeODReader.Elapsed += ReinitializeODReader_Tick;
-            ReinitializeODReader.Start();
+            //ReinitializeODReader.Start();
         }
 
         public void assignMonitors(ref ODMonitor odm_, ref ScaleMonitor sm_)
@@ -506,12 +507,14 @@ namespace turbido1
                 Thread.Sleep(1000);
             isKeepingLevelActiveA = true;
 
+            // pressurize tube As
+            relays[AirValveToTubeAs[0]].TurnOn(AirValveToTubeAs[1]);
+            Thread.Sleep((Int32)((TubePressurizationTime) * 1000));
+
             // change to evacuation line configuration
             for (int i = 0; i < 8; i++)
                 relays[ASetThreeWayRelayIDs[i, 0]].TurnOn(ASetThreeWayRelayIDs[i, 1]);
             //logMain("Culture As are in evacuation mode.");
-            // pressurize tube As
-            relays[AirValveToTubeAs[0]].TurnOn(AirValveToTubeAs[1]);
             //logMain("Tube As are pressurized.");
 
             Thread.Sleep((Int32)((time) * 1000));
@@ -537,13 +540,15 @@ namespace turbido1
             while (isKeepingLevelActiveA)
                 Thread.Sleep(1000);
             isKeepingLevelActiveB = true;
-            
+
+            // pressurize tube Bs
+            relays[AirValveToTubeBs[0]].TurnOn(AirValveToTubeBs[1]);
+            Thread.Sleep((Int32)((TubePressurizationTime) * 1000));
+
             // change to evacuation line configuration
             for (int i = 0; i < 8; i++)
                 relays[BSetThreeWayRelayIDs[i, 0]].TurnOn(BSetThreeWayRelayIDs[i, 1]);
             //logMain("Culture Bs are in evacuation mode.");
-            // pressurize tube Bs
-            relays[AirValveToTubeBs[0]].TurnOn(AirValveToTubeBs[1]);
             //logMain("Tube Bs are pressurized.");
 
             Thread.Sleep((Int32)((time) * 1000));
@@ -1082,7 +1087,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
 
                 // if IBs are emptied skip filling rest of the tubes
                 if (sw.ElapsedMilliseconds >= safetyMaxSecondsDilutionAllowed * 1000)
-                    break;
+                    this.logMain("Maximum dilution duration is exceeded for culture " + i.ToString() + "A");
 
                 Thread.Sleep(1000);
             }
@@ -1125,7 +1130,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
 
                 // if IBs are emptied skip filling rest of the tubes
                 if (sw.ElapsedMilliseconds >= safetyMaxSecondsDilutionAllowed * 1000)
-                    break;
+                    this.logMain("Maximum dilution duration is exceeded for culture " + i.ToString() + "A");
+                    //break;
 
                 Thread.Sleep(1000);
             }
@@ -1194,7 +1200,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
 
                 // if IBs are emptied skip filling rest of the tubes
                 if (sw.ElapsedMilliseconds >= safetyMaxSecondsDilutionAllowed * 1000)
-                    break;
+                    this.logMain("Maximum dilution duration is exceeded for culture " + i.ToString() + "B");
 
                 Thread.Sleep(1000);
             }
@@ -1238,7 +1244,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
 
                 // if IBs are emptied skip filling rest of the tubes
                 if (sw.ElapsedMilliseconds >= safetyMaxSecondsDilutionAllowed * 1000)
-                    break;
+                    this.logMain("Maximum dilution duration is exceeded for culture " + i.ToString() + "B");
+                    //break;
                 Thread.Sleep(1000);
             }
             // push out the liquid accumulated inside the filters
@@ -1312,10 +1319,14 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void AltEvacuateTubeAs_worker(double time)
         {
-            // turn on keeping level line
-            relays[KeepingLevelBlockA[0]].TurnOn(KeepingLevelBlockA[1]);
+     
             // pressurize Tube As
             relays[AirValveToTubeAs[0]].TurnOn(AirValveToTubeAs[1]);
+            Thread.Sleep((Int32)(TubePressurizationTime * 1000));
+
+            // turn on keeping level line
+            relays[KeepingLevelBlockA[0]].TurnOn(KeepingLevelBlockA[1]);
+
             Thread.Sleep((Int32)(time * 1000));
             // turn off keeping level line
             relays[KeepingLevelBlockA[0]].TurnOff(KeepingLevelBlockA[1]);
@@ -1328,11 +1339,13 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             (new Thread(() => AltEvacuateTubeBs_worker(time))).Start();
         }
         public void AltEvacuateTubeBs_worker(double time)
-        {           
-            // turn on keeping level line
-            relays[KeepingLevelBlockB[0]].TurnOn(KeepingLevelBlockB[1]);
+        {
             // pressurize Tube Bs
             relays[AirValveToTubeBs[0]].TurnOn(AirValveToTubeBs[1]);
+            Thread.Sleep((Int32)(TubePressurizationTime * 1000));
+            // turn on keeping level line
+            relays[KeepingLevelBlockB[0]].TurnOn(KeepingLevelBlockB[1]);
+        
             Thread.Sleep((Int32)(time * 1000));
             // turn off keeping level line
             relays[KeepingLevelBlockB[0]].TurnOff(KeepingLevelBlockB[1]);
@@ -1972,7 +1985,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             relays[BleachValveToIBA[0]].TurnOff(BleachValveToIBA[1]);
             logMain("[Bleach Making A] Concentrated Bleach amount: " + (load_sensors.Read()[1] - rtw).ToString() + " gr");
             library.mediaAirationAllowed = true;
-            AirMixIBA_worker(90);
+            AirMixIBA_worker(15);
         }
 
         public void MakeBleachB(double total_amount)
@@ -2020,7 +2033,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             relays[BleachValveToIBB[0]].TurnOff(BleachValveToIBB[1]);
             logMain("[Bleach Making B] Concentrated Bleach amount: " + (load_sensors.Read()[0] - rtw).ToString() + " gr");
             library.mediaAirationAllowed = true;
-            AirMixIBB_worker(90);
+            AirMixIBB_worker(15);
         }
 
         public void setODA(double set_od_level, int culture_id)

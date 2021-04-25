@@ -51,25 +51,25 @@ namespace turbido1
         private bool simulationMode = false;
         public Double assumedGrowthRate = 20; // doubling time in mins
         double transferTime = 6;
-        double evacuationTime = 45;
-        double fBleachTime = 23;
-        double fWaterTime = 25;
-        double bleachTime = 21;
-        double wasteTime = 12;
-        double waterTime = 22;
-        double dilutionTime = 8;
+        double evacuationTime = 35;
+        double fBleachTime = 21; //ml
+        double fWaterTime = 22;
+        double bleachTime = 21; //
+        double wasteTime = 12; // how much to discard at each cycle when wasting IBs
+        double waterTime = 22; //
+        double dilutionTime = 10;
         double LBLowerThresold = 100;// ml
         double LBRefresh = 200;      // ml
-        double LBInitialFill = 400; // ml
-        double bleachVolume = 200;   // ml
-        double waterVolume = 400;    // ml
-        double fWaterVolume = 1000;   // ml
-        double fBleachVolume = 600;  // ml
+        double LBInitialFill = 350; // ml
+        double bleachVolume = 350;   // ml was 350
+        double waterVolume = 700;    // ml
+        double fWaterVolume = 1100;   // ml
+        double fBleachVolume = 1000;  // ml
         int waterMixTime = 60;   // secs
         int bleachMixTime = 10; // secs
         int beforeTransferMixTime = 30; // secs
-        int bleachCycleWaitTime = 10; // mins
-        int waterCycleWaitTime = 5; // mins
+        int bleachCycleWaitTime = 8; // mins ### was 8
+        int waterCycleWaitTime = 1; // mins
         int fullGrowthCurveTime = 80; // mins
         public double dilutionCyclePeriod = 5; // minutes
 
@@ -90,7 +90,7 @@ namespace turbido1
             }
         }
 
-        private double transferCyclePeriod = 8; // hours
+        private double transferCyclePeriod = 2; // hours
         public double TransferCyclePeriod
         {
             get { return transferCyclePeriod; }
@@ -186,7 +186,7 @@ namespace turbido1
         // algorithms
         public void StartSimpleTurbidostat()
         {
-            core.logMain("Simple turbidostat algorithm is started.");
+            core.logMain("***Algorithm*** StartSimpleTurbidostat()");
             cycler = new System.Timers.Timer(dilutionCyclePeriod * 60 * 1000);
             cycler.Elapsed += TurbidostatCycle;
             transfer_cycler = new System.Timers.Timer(transferCyclePeriod * 3600 * 1000);
@@ -208,6 +208,7 @@ namespace turbido1
             // transfer from B to A
             //core.TransferBtoA_worker(transferTime);
             //MainWashingProtocolB();
+            core.logMain("***Algorithm*** StartAutomatedTurbidostat()");
 
             if (simulationMode)
             {
@@ -244,8 +245,12 @@ namespace turbido1
                     currentPhase[4 + i] = currentPhase[12 + i] = Phase.G;
                 }
             }
-            core.DataCollector.Start();
-            core.ReinitializeODReader.Start();
+            if (core.DataCollector.Enabled == false) 
+            {
+                core.DataCollector.Start();
+                core.ReinitializeODReader.Start();
+            }
+
             cycler.Start();
             recordOverThrTiming.Start();
             transfer_cycler.Start();
@@ -261,14 +266,10 @@ namespace turbido1
             mediaAirationActive = true;
             if (culture_set == 'A')
             {
-                if (currentPhase[4] != Phase.W)
-                    core.AirMixIBB(5);
                 core.AirMixIBA_worker(5);
             }
             else if (culture_set == 'B')
             {
-                if (currentPhase[0] != Phase.W)
-                    core.AirMixIBA(5);
                 core.AirMixIBB_worker(5);
             }
             mediaAirationActive = false;
@@ -288,7 +289,7 @@ namespace turbido1
         public void TurbidostatCycle(object state, ElapsedEventArgs e)
         {
             turbidostatCycleActive = true;
-            core.logMain("Turbidostat cycle is active.");
+            core.logMain("***Algorithm*** TurbidostatCycle(state,e)");
             List<int> over_thrA = new List<int>();
             List<int> over_thrB = new List<int>();
             Double[] od = lastMeanODp.values;
@@ -345,7 +346,7 @@ namespace turbido1
                     core.MakeLBB(LBRefresh);
             }
 
-            core.logMain("Turbidostat cycle is done.");
+            //core.logMain("Turbidostat cycle is done.");
             turbidostatCycleActive = false;
         }
 
@@ -355,8 +356,9 @@ namespace turbido1
                 Thread.Sleep(1000);
             while (mediaAirationActive)
                 Thread.Sleep(1000);
+
             turbidostatCycleActive = true;
-            core.logMain("Turbidostat cycle is active.");
+            core.logMain("***Algorithm*** AutomatedTurbidostatCycle(state,e)");
             List<int> over_thrA = new List<int>();
             List<int> over_thrB = new List<int>();
             Double[] od = lastMeanODp.values;
@@ -432,7 +434,7 @@ namespace turbido1
             // dilute over threshold cultures
             if (culture_set == 'A')
             {
-                core.logMain("Cultures " + over_thrAs + "are getting diluted.");
+                //core.logMain("Cultures " + over_thrAs + "are getting diluted.");
                 // Dilute
                 mainThreadOnWait = true;
                 if (simulationMode)
@@ -494,7 +496,7 @@ namespace turbido1
                     core.MakeLBB_worker(LBRefresh);
             }
 
-            core.logMain("Turbidostat cycle is done.");
+            //core.logMain("Turbidostat cycle is done.");
             turbidostatCycleActive = false;
         }
 
@@ -504,6 +506,7 @@ namespace turbido1
         }
         public void DiluteTubeBWithFeedback_worker(List<int> cultureIDs)
         {
+            core.logMain("***Algorithm*** DiluteTubeBWithFeedback(IDs)");
             if (cultureIDs.Count == 0)
             {
                 // release main thread
@@ -596,6 +599,7 @@ namespace turbido1
         }
         public void DiluteTubeAWithFeedback_worker(List<int> cultureIDs)
         {
+            core.logMain("***Algorithm*** DiluteTubeAWithFeedback(IDs)");
 
             if (cultureIDs.Count == 0)
             {
@@ -689,8 +693,11 @@ namespace turbido1
         }
         public void DiluteTubeAByScale_worker(List<int> cultureIDs)
         {
+            core.logMain("***Algorithm*** DiluteTubeAByScale(IDs)");
             if (cultureIDs.Count == 0)
             {
+                // run keep level on all tubes (helps prevent liquid build up in the air filters)
+                core.AltKeepLevelA_worker(core.keepingLevelTime);
                 // release main thread
                 mainThreadOnWait = false;
                 return;
@@ -705,7 +712,8 @@ namespace turbido1
             // pressurize IB
             core.relays[core.AirValveToIBA[0]].TurnOn(core.AirValveToIBA[1]);
             // keep level
-            core.AltKeepLevelASelect_worker(cultureIDs, core.keepingLevelTime);
+            //core.AltKeepLevelASelect_worker(cultureIDs, core.keepingLevelTime);
+            core.AltKeepLevelA_worker(core.keepingLevelTime);
             // update phase dilution
             string cultures="";
             foreach (int cID in cultureIDs)
@@ -721,6 +729,10 @@ namespace turbido1
             // depressurize IB
             core.relays[core.AirValveToIBA[0]].TurnOff(core.AirValveToIBA[1]);
 
+            // keep level
+            Thread.Sleep(30 * 1000);
+            core.AltKeepLevelASelect_worker(cultureIDs, core.keepingLevelTime);
+
             mainThreadOnWait = false;
         }
 
@@ -730,8 +742,11 @@ namespace turbido1
         }
         public void DiluteTubeBByScale_worker(List<int> cultureIDs)
         {
+            core.logMain("***Algorithm*** DiluteTubeBByScale(IDs)");
             if (cultureIDs.Count == 0)
             {
+                // run keep level on all tubes (helps prevent liquid build up in the air filters)
+                core.AltKeepLevelB_worker(core.keepingLevelTime);
                 // release main thread
                 mainThreadOnWait = false;
                 return;
@@ -746,7 +761,8 @@ namespace turbido1
             // pressurize IB
             core.relays[core.AirValveToIBB[0]].TurnOn(core.AirValveToIBB[1]);
             // keep level
-            core.AltKeepLevelBSelect_worker(cultureIDs, core.keepingLevelTime);
+            // core.AltKeepLevelBSelect_worker(cultureIDs, core.keepingLevelTime);
+            core.AltKeepLevelB_worker(core.keepingLevelTime);
             // update phase dilution
             string cultures = "";
             foreach (int cID in cultureIDs)
@@ -761,12 +777,17 @@ namespace turbido1
             core.FillTubeBsByScale_worker(cultureIDs, dilutionTime, pre_pressurized: true);
             // depressurize IB
             core.relays[core.AirValveToIBB[0]].TurnOff(core.AirValveToIBB[1]);
+            Thread.Sleep(30*1000);
+            // keep level
+            core.AltKeepLevelBSelect_worker(cultureIDs, core.keepingLevelTime);
 
             mainThreadOnWait = false;
         }
 
         public void TransferCycle(object state, ElapsedEventArgs e)
         {
+            core.logMain("***Algorithm*** TransferCycle(state,e)");
+
             // modify the active tubes for transfer
             List<int> select = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8};
             for (int i = 0; i < select.Count; i++) select[i]--;
@@ -785,6 +806,7 @@ namespace turbido1
             {
                 core.AltKeepLevelB_worker(core.keepingLevelTime);
                 core.AltKeepLevelA_worker(core.keepingLevelTime);
+                Thread.Sleep(5000); // Vent the tubes
                 core.FillTubeAsByScale_worker(dilutionTime);
                 Thread.Sleep(beforeTransferMixTime*1000);
                 core.TransferAtoBSelect_worker(select, transferTime);
@@ -796,6 +818,7 @@ namespace turbido1
             {
                 core.AltKeepLevelA_worker(core.keepingLevelTime);
                 core.AltKeepLevelB_worker(core.keepingLevelTime);
+                Thread.Sleep(5000); // Vent the tubes
                 core.FillTubeBsByScale_worker(dilutionTime);
                 Thread.Sleep(beforeTransferMixTime * 1000);
                 core.TransferBtoASelect_worker(select, transferTime);
@@ -814,73 +837,6 @@ namespace turbido1
             // wash and get ready original tubesdilutionTime
             if (culture_set == 'A')
             {
-                media_airation_cycler.Start();
-
-                /*
-                // Take a full growth curve before wash
-                // check media supplies
-                Double[] media_supplies = core.load_sensors.Read();
-                if (media_supplies[0] < 300)
-                    core.MakeLBB_worker(350 - media_supplies[0]);
-                //single wash
-                core.AltKeepLevelB_worker(core.keepingLevelTime);
-                core.FillTubeBsByScale_worker(dilutionTime);
-                Thread.Sleep(Convert.ToInt32(dilutionTime) * 1000);
-                core.AltKeepLevelB_worker(core.keepingLevelTime);
-                core.FillTubeBsByScale_worker(dilutionTime);
-                Thread.Sleep(Convert.ToInt32(dilutionTime) * 1000);
-                core.AltKeepLevelB_worker(core.keepingLevelTime);
-                core.FillTubeBsByScale_worker(dilutionTime);
-                Thread.Sleep(Convert.ToInt32(dilutionTime) * 1000);
-                core.AltKeepLevelB_worker(core.keepingLevelTime);
-                core.FillTubeBsByScale_worker(dilutionTime);
-
-                ////double wash
-                // register for idle phase
-                //for (int i = 0; i < 4; i++)
-                //    currentPhase[4 + i] = currentPhase[12 + i] = Phase.I;
-                //Thread.Sleep(airationBeforeInitiationTime * 60 * 1000);
-                //core.FillTubeBsByScale(dilutionTime);
-                // Fill evacuation line
-                //core.AltEvacuateTubeBs(2);
-                // Prime LB (again)
-                //core.FillTubeBsByScale_worker(dilutionTime*1.5);
-                // reading blank phase
-                // for (int i = 0; i < 4; i++)
-                //     currentPhase[4 + i] = currentPhase[12 + i] = Phase.C0;
-                // core.AltKeepLevelB_worker(core.keepingLevelTime);
-                // // innoculate cells from other side
-                // while (!turbidostatCycleActive)
-                //     Thread.Sleep(1000);
-                // while (turbidostatCycleActive)
-                //     Thread.Sleep(1000);
-                // core.AltKeepLevelA(core.keepingLevelTime);
-                // // pressurize IBA
-                // core.relays[core.AirValveToIBA[0]].TurnOn(core.AirValveToIBA[1]);
-                // // wait pressure to be stabilized
-                // Thread.Sleep(core.IBPressurizationTime * 1000);
-                // foreach(int cID in select)
-                // {
-                //     List<int> select_one=new List<int>(); select_one.Add(cID);
-                //     core.FillTubeAsByScale_worker(select_one, dilutionTime, pre_pressurized:true);
-
-                // }
-                // Thread.Sleep(beforeTransferMixTime/2 * 1000);
-                // foreach (int cID in select)
-                // {
-                //     List<int> select_one = new List<int>(); select_one.Add(cID);
-                //     core.TransferAtoBSelect_worker(select_one, transferTime);
-                // }
-                //// depressurize IB
-                // core.relays[core.AirValveToIBA[0]].TurnOff(core.AirValveToIBA[1]);
-                // Thread.Sleep(2000);
-
-                // growth curve phase started
-                for (int i = 0; i < 4; i++)
-                    currentPhase[4 + i] = currentPhase[12 + i] = Phase.C;
-                core.logMain("Growth curve period started at culture Bs.");
-                Thread.Sleep(fullGrowthCurveTime * 60 * 1000);
-                */
 
                 // register for second cleaning phase
                 for (int i = 0; i < 4; i++)
@@ -890,15 +846,15 @@ namespace turbido1
                 // waste remaining media
                 WasteIBB_worker();
                 // start cleaning protocol
-                currentScalePhase[0] = Phase.B;
                 BleachWashingProtocolB_worker("normal");
                 // make media ready for next cycle
-                currentScalePhase[0] = Phase.M;
                 core.MakeLBB_worker(LBInitialFill);
-                currentScalePhase[0] = Phase.F;
                 // Prime LB
-                core.FillTubeBsByScale_worker(dilutionTime*1.5);
-                currentScalePhase[0] = Phase.I;
+                core.FillTubeBsByScale_worker(dilutionTime*2);
+                core.AltKeepLevelB_worker(0.75);
+                core.AltEvacuateTubeBs_worker(0.75);
+
+                media_airation_cycler.Start();
 
                 // let them be ready
                 for (int i = 0; i < 4; i++)
@@ -906,36 +862,7 @@ namespace turbido1
             }
             if (culture_set == 'B')
             {
-                media_airation_cycler.Start();
-
-                /*
-                // Take a full growth curve before wash
-                // check media supplies
-                Double[] media_supplies = core.load_sensors.Read();
-              
-                if (media_supplies[1] < 300)
-                    core.MakeLBA_worker(350-media_supplies[1]);
                 
-                //single wash
-                core.AltKeepLevelA_worker(core.keepingLevelTime);
-                core.FillTubeAsByScale_worker(dilutionTime);
-                Thread.Sleep(Convert.ToInt32(dilutionTime) * 1000);
-                core.AltKeepLevelA_worker(core.keepingLevelTime);
-                core.FillTubeAsByScale_worker(dilutionTime);
-                Thread.Sleep(Convert.ToInt32(dilutionTime) * 1000);
-                core.AltKeepLevelA_worker(core.keepingLevelTime);
-                core.FillTubeAsByScale_worker(dilutionTime);
-                Thread.Sleep(Convert.ToInt32(dilutionTime) * 1000);
-                core.AltKeepLevelA_worker(core.keepingLevelTime);
-                core.FillTubeAsByScale_worker(dilutionTime);
-
-                // growth curve phase started
-                for (int i = 0; i < 4; i++)
-                    currentPhase[i] = currentPhase[8 + i] = Phase.C;
-                core.logMain("Growth curve period started at culture As.");
-                Thread.Sleep(fullGrowthCurveTime * 60 * 1000);
-                */
-                // register for second cleaning phase
                 for (int i = 0; i < 4; i++)
                     currentPhase[i] = currentPhase[8 + i] = Phase.W;
                 // evacuate any leftovers
@@ -943,15 +870,14 @@ namespace turbido1
                 // waste remaining media
                 WasteIBA_worker();
                 // start cleaning protocol
-                currentScalePhase[1] = Phase.B;
                 BleachWashingProtocolA_worker("normal");
                 // make media ready for next cycle
-                currentScalePhase[1] = Phase.M;
                 core.MakeLBA_worker(LBInitialFill);
-                currentScalePhase[1] = Phase.F;
-                core.FillTubeAsByScale_worker(dilutionTime*1.5);
-                currentScalePhase[1] = Phase.I;
+                core.FillTubeAsByScale_worker(dilutionTime*2);
+                core.AltKeepLevelA_worker(0.75);
+                core.AltEvacuateTubeAs_worker(0.75);
 
+                media_airation_cycler.Start();
                 // let them be ready
                 for (int i = 0; i < 4; i++)
                     currentPhase[i] = currentPhase[8 + i] = Phase.I;
@@ -1160,8 +1086,8 @@ namespace turbido1
             for (int i = 0; i < 4; i++)
                 currentPhase[i] = currentPhase[8 + i] = Phase.W;
 
-            // evacuate any leftovers
-            core.logMain("[Main Washing Protocol A] Evacuating tubes.");
+            // evacuate any leftovers            
+            core.logMain("***Algorithm*** MainWashingProtocolA(strength)");
             core.AltEvacuateTubeAs_worker(evacuationTime);
             // waste remaining media
             core.logMain("[Main Washing Protocol A] Wasting IBA.");
@@ -1170,12 +1096,12 @@ namespace turbido1
             core.logMain("[Main Washing Protocol A] Starting bleach washing.");
             BleachWashingProtocolA_worker(strength);
             // make media ready for next cycle
-            //core.logMain("[Main Washing Protocol A] Making LB for next cycle.");
-            //core.MakeLBA_worker(LBInitialFill);
+            core.logMain("[Main Washing Protocol A] Making LB for next cycle.");
+            core.MakeLBA_worker(LBInitialFill);
             ////core.FillWaterIntoIBAUptoWeight_worker(500);
             //// debubble tubes, and fill with 20 ml media
-            //core.logMain("[Main Washing Protocol A] Priming LB into tubes.");
-            //core.FillTubeAsByScale_worker(dilutionTime*1.5);
+            core.logMain("[Main Washing Protocol A] Priming LB into tubes.");
+            core.FillTubeAsByScale_worker(dilutionTime * 1.5);
             core.logMain("[Main Washing Protocol A] Completed.");
 
             // mark phase
@@ -1193,7 +1119,7 @@ namespace turbido1
                 currentPhase[4+i] = currentPhase[12 + i] = Phase.W;
 
             // evacuate any leftovers
-            core.logMain("[Main Washing Protocol B] Evacuating tubes.");
+            core.logMain("***Algorithm*** MainWashingProtocolB(strength)");
             core.AltEvacuateTubeBs_worker(evacuationTime);
             // waste remaining media
             core.logMain("[Main Washing Protocol B] Wasting IBB.");
@@ -1201,13 +1127,13 @@ namespace turbido1
             // start cleaning protocol
             core.logMain("[Main Washing Protocol B] Starting bleach washing.");
             BleachWashingProtocolB_worker(strength);
-            //// make media ready for next cycle
-            //core.logMain("[Main Washing Protocol B] Making LB for next cycle.");
-            //core.MakeLBB_worker(LBInitialFill);
+            // make media ready for next cycle
+            core.logMain("[Main Washing Protocol B] Making LB for next cycle.");
+            core.MakeLBB_worker(LBInitialFill);
             //// debubble tubes, and fill with 20 ml media
-            //core.logMain("[Main Washing Protocol B] Priming LB into tubes.");
-            //core.FillTubeBsByScale_worker(dilutionTime*1.5);
-            //core.logMain("[Main Washing Protocol B] Completed.");
+            core.logMain("[Main Washing Protocol B] Priming LB into tubes.");
+            core.FillTubeBsByScale_worker(dilutionTime * 1.5);
+            core.logMain("[Main Washing Protocol B] Completed.");
 
             // mark phase
             for (int i = 0; i < 4; i++)
@@ -1221,8 +1147,8 @@ namespace turbido1
         {
             double start, end, bleach_volume, water_volume, bleach_time, water_time; // ml
             int cycle_count;
-            //core.logMain("Bleach Washing Protocol A has started.");
-            
+            core.logMain("***Algorithm*** BleachWashingProtocolA(strength)");
+
             if (strength.ToLower() == "normal")
             {
                 bleach_volume = bleachVolume;
@@ -1237,8 +1163,9 @@ namespace turbido1
                 water_volume = fWaterVolume;
                 water_time = fWaterTime;
             }
-
+            
             // Bleach cycle
+            
             core.MakeBleachA_worker(bleach_volume * 1.011);
             core.logMain("[Bleach Washing Protocol A] IBA is filled with " + bleach_volume.ToString() + " ml bleach.");
             core.logMain("[Bleach Washing Protocol A] Bleach is getting mixed for " + (bleachMixTime * 2).ToString() + " seconds.");
@@ -1255,6 +1182,7 @@ namespace turbido1
                 core.FillTubeAsByScale_worker(activeCultures,bleach_time);
                 // end if last cycle of bleach
                 end = core.load_sensors.Read()[1];
+
                 if (Math.Abs(start - end) <= 50)
                 {
                     // Evacuate
@@ -1267,8 +1195,8 @@ namespace turbido1
                 Thread.Sleep(10000);
 
                 // Fill tubings with bleach
-                core.AltKeepLevelA_worker(0.75);
-                core.AltEvacuateTubeAs_worker(0.75);
+                core.AltKeepLevelA_worker(0.5);
+                core.AltEvacuateTubeAs_worker(0.5);
 
                 // Sterilization time
                 Thread.Sleep(bleachCycleWaitTime*60*1000);
@@ -1300,13 +1228,13 @@ namespace turbido1
             // core.AirMixIBA_worker(60);
             // wait water to freely dilute
             Thread.Sleep(waterMixTime * 1000);
-
+            
             start = 1e9; end = 0; cycle_count = 0;
             while (Math.Abs(start - end) > 50)
             {
                 core.logMain("[Bleach Washing Protocol A] Proceeding with water cycle " + (++cycle_count).ToString() + ".");
                 start = core.load_sensors.Read()[1];
-                core.FillTubeAsByScale_worker(activeCultures,water_time);
+                core.FillTubeAsByScale_worker(activeCultures, water_time);
                 //core.FillTubeAs(water_time);
                 Thread.Sleep(waterCycleWaitTime * 60 * 1000);
                 core.AltKeepLevelA_worker(core.keepingLevelTime);
@@ -1327,7 +1255,7 @@ namespace turbido1
         {
             double start, end, bleach_time, water_time, bleach_volume, water_volume;
             int  cycle_count;
-            core.logMain("Bleach Washing Protocol B has started.");
+            core.logMain("***Algorithm*** BleachWashingProtocolB(strength)");
 
             if (strength.ToLower() == "normal")
             {
@@ -1374,8 +1302,8 @@ namespace turbido1
                 Thread.Sleep(10000);
 
                 // Fill tubings with bleach
-                core.AltKeepLevelB_worker(0.75);
-                core.AltEvacuateTubeBs_worker(0.75);
+                core.AltKeepLevelB_worker(0.5);
+                core.AltEvacuateTubeBs_worker(0.5);
 
                 // Sterilization time
                 Thread.Sleep(bleachCycleWaitTime*60*1000);
@@ -1412,7 +1340,7 @@ namespace turbido1
             Thread.Sleep(waterMixTime * 1000);
 
             start = 1e9; end = 0; cycle_count = 0;
-            while (Math.Abs(start - end) > 50)
+            while (Math.Abs(start - end) > 8*waterTime*0.75)
             {
                 core.logMain("[Bleach Washing Protocol B] Proceeding with water cycle " + (++cycle_count).ToString() + ".");
                 start = core.load_sensors.Read()[0];
@@ -1432,11 +1360,10 @@ namespace turbido1
         }
         public void WasteIBA_worker()
         {
+            core.logMain("***Algorithm*** WasteIBA()" + "[" + Math.Abs(start - end).ToString() + "]");
             double start = 1e9, end = 0;
             while (Math.Abs(start - end) > 30)
             {
-                core.logMain("Waste cycle for IBA is started." + "[" + Math.Abs(start - end).ToString() + "]");
-
                 start = core.load_sensors.Read()[1];
                 core.FillTubeAs_worker(wasteTime);
                 Thread.Sleep(1000);
@@ -1453,11 +1380,10 @@ namespace turbido1
         }
         public void WasteIBB_worker()
         {
+            core.logMain("***Algorithm*** WasteIBB()" + "[" + Math.Abs(start - end).ToString() + "]");
             double start = 1e9, end = 0;
             while (Math.Abs(start - end) > 30)
             {
-                core.logMain("Waste cycle for IBB is started." + "[" + Math.Abs(start - end).ToString() + "]");
-
                 start = core.load_sensors.Read()[0];
                 core.FillTubeBs_worker(wasteTime);
                 Thread.Sleep(1000);

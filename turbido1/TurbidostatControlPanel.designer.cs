@@ -38,6 +38,8 @@
             this.groupBoxMonitors = new System.Windows.Forms.GroupBox();
             this.checkBoxODReader = new System.Windows.Forms.CheckBox();
             this.buttonRefreshODMonitor = new System.Windows.Forms.Button();
+            this.buttonResetScales = new System.Windows.Forms.Button();
+            this.buttonScalesValues = new System.Windows.Forms.Button();
             this.groupBoxTurbidostatParameters = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxMediaAirationPeriod = new System.Windows.Forms.TextBox();
@@ -53,50 +55,30 @@
             this.buttonManualCommandOn = new System.Windows.Forms.Button();
             this.buttonManualCommandOff = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBoxPressurizeMediaReservoirDuration = new System.Windows.Forms.TextBox();
+            this.buttonPressurizeMediaReservoir = new System.Windows.Forms.Button();
+            this.buttonWasteIBB = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxWasteIntoSinkDuration = new System.Windows.Forms.TextBox();
+            this.buttonStartWasteIntoSink = new System.Windows.Forms.Button();
+            this.buttonWasteIBA = new System.Windows.Forms.Button();
+            this.textBoxKeepLevelBCultureID = new System.Windows.Forms.TextBox();
+            this.textBoxKeepLevelACultureID = new System.Windows.Forms.TextBox();
             this.buttonFillTubeBFast = new System.Windows.Forms.Button();
             this.buttonFillTubeAFast = new System.Windows.Forms.Button();
             this.textBoxTransferBtoACultureIDs = new System.Windows.Forms.TextBox();
             this.textBoxTransferAtoBCultureIDs = new System.Windows.Forms.TextBox();
-            this.buttonSetODB = new System.Windows.Forms.Button();
-            this.textBoxSetODCultureID = new System.Windows.Forms.TextBox();
-            this.textBoxSetOD = new System.Windows.Forms.TextBox();
-            this.buttonSetODA = new System.Windows.Forms.Button();
-            this.textBoxAddIPTGIntoIBAPushBackTime = new System.Windows.Forms.TextBox();
-            this.textBoxAddIPTGIntoIBAGrams = new System.Windows.Forms.TextBox();
-            this.buttonAddIPTGIntoIBB = new System.Windows.Forms.Button();
-            this.buttonAddIPTGIntoIBA = new System.Windows.Forms.Button();
-            this.textBoxAddDrug2IntoIBAPushBackTime = new System.Windows.Forms.TextBox();
-            this.textBoxAddDrug2IntoIBAGrams = new System.Windows.Forms.TextBox();
-            this.buttonAddDrug2IntoIBB = new System.Windows.Forms.Button();
-            this.buttonAddDrug2IntoIBA = new System.Windows.Forms.Button();
-            this.textBoxAddDrug1IntoIBBPushBackTime = new System.Windows.Forms.TextBox();
-            this.textBoxAddDrug1IntoIBAGrams = new System.Windows.Forms.TextBox();
-            this.buttonAddDrug1IntoIBB = new System.Windows.Forms.Button();
-            this.buttonAddDrug1IntoIBA = new System.Windows.Forms.Button();
             this.buttonMakeBleachIBB = new System.Windows.Forms.Button();
             this.textBoxMakeBleachIBAGrams = new System.Windows.Forms.TextBox();
             this.buttonMakeBleachIBA = new System.Windows.Forms.Button();
-            this.textBoxDiluteTubeBCultureID = new System.Windows.Forms.TextBox();
-            this.textBoxDiluteTubeBTime = new System.Windows.Forms.TextBox();
-            this.buttonDiluteTubeB = new System.Windows.Forms.Button();
-            this.textBoxDiluteTubeACultureID = new System.Windows.Forms.TextBox();
-            this.textBoxDiluteTubeATime = new System.Windows.Forms.TextBox();
-            this.buttonDiluteTubeA = new System.Windows.Forms.Button();
-            this.textBoxWashTubeBCycle = new System.Windows.Forms.TextBox();
-            this.textBoxWashTubeACycle = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.buttonMakeLBInIBB = new System.Windows.Forms.Button();
             this.textBoxMakeLBInIBAGrams = new System.Windows.Forms.TextBox();
             this.buttonMakeLBInIBA = new System.Windows.Forms.Button();
-            this.textBoxWashTubeBCultureID = new System.Windows.Forms.TextBox();
-            this.textBoxWashTubeBTime = new System.Windows.Forms.TextBox();
-            this.buttonWashTubeB = new System.Windows.Forms.Button();
-            this.textBoxWashTubeACultureID = new System.Windows.Forms.TextBox();
-            this.textBoxWashTubeATime = new System.Windows.Forms.TextBox();
-            this.buttonWashTubeA = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxFillMediaIntoIBAPushBackTime = new System.Windows.Forms.TextBox();
             this.buttonFillBleachIntoIBB = new System.Windows.Forms.Button();
             this.buttonWaterIntoIBB = new System.Windows.Forms.Button();
             this.buttonFillMediaIntoIBB = new System.Windows.Forms.Button();
@@ -110,10 +92,8 @@
             this.buttonKeepLevelTubeB = new System.Windows.Forms.Button();
             this.textBoxKeepLevelTubeATime = new System.Windows.Forms.TextBox();
             this.buttonKeepLevelTubeA = new System.Windows.Forms.Button();
-            this.textBoxEvacuateTubeBCultureID = new System.Windows.Forms.TextBox();
             this.textBoxEvacuateTubeBTime = new System.Windows.Forms.TextBox();
             this.buttonEvacuateTubeB = new System.Windows.Forms.Button();
-            this.textBoxEvacuateTubeACultureID = new System.Windows.Forms.TextBox();
             this.textBoxEvacuateTubeATime = new System.Windows.Forms.TextBox();
             this.buttonEvacuateTubeA = new System.Windows.Forms.Button();
             this.textBoxFillTubeBCultureID = new System.Windows.Forms.TextBox();
@@ -137,10 +117,16 @@
             this.buttonScaleCalSetHigh = new System.Windows.Forms.Button();
             this.buttonScaleCalSetLow = new System.Windows.Forms.Button();
             this.groupBoxLaserCalibration = new System.Windows.Forms.GroupBox();
+            this.buttonReadBlankB = new System.Windows.Forms.Button();
+            this.buttonReadBlankA = new System.Windows.Forms.Button();
             this.buttonReadBlank = new System.Windows.Forms.Button();
             this.buttonMakeNewCalibration = new System.Windows.Forms.Button();
             this.comboBoxSelectLaserCalibration = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxBleachWashingProtocolModeB = new System.Windows.Forms.ComboBox();
+            this.comboBoxBleachWashingProtocolModeA = new System.Windows.Forms.ComboBox();
+            this.buttonBleachWashingProtocolB = new System.Windows.Forms.Button();
+            this.buttonBleachWashingProtocolA = new System.Windows.Forms.Button();
             this.comboBoxMainWashingProtocolModeB = new System.Windows.Forms.ComboBox();
             this.comboBoxMainWashingProtocolModeA = new System.Windows.Forms.ComboBox();
             this.buttonMainWashingProtocolB = new System.Windows.Forms.Button();
@@ -151,14 +137,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelSystemTime = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.buttonFillTubeAsByScale = new System.Windows.Forms.Button();
-            this.buttonWasteIBB = new System.Windows.Forms.Button();
-            this.buttonWasteIBA = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.radioButtonStartingCultureB = new System.Windows.Forms.RadioButton();
             this.radioButtonStartingCultureA = new System.Windows.Forms.RadioButton();
-            this.buttonReadBlankA = new System.Windows.Forms.Button();
-            this.buttonReadBlankB = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBoxMonitors.SuspendLayout();
             this.groupBoxTurbidostatParameters.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -173,11 +155,11 @@
             // 
             this.buttonAllPumpsOff.BackColor = System.Drawing.SystemColors.Control;
             this.buttonAllPumpsOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAllPumpsOff.Location = new System.Drawing.Point(391, 199);
+            this.buttonAllPumpsOff.Location = new System.Drawing.Point(386, 229);
             this.buttonAllPumpsOff.Name = "buttonAllPumpsOff";
-            this.buttonAllPumpsOff.Size = new System.Drawing.Size(51, 45);
+            this.buttonAllPumpsOff.Size = new System.Drawing.Size(211, 32);
             this.buttonAllPumpsOff.TabIndex = 3;
-            this.buttonAllPumpsOff.Text = "OFF";
+            this.buttonAllPumpsOff.Text = "All valves OFF";
             this.buttonAllPumpsOff.UseVisualStyleBackColor = true;
             this.buttonAllPumpsOff.Click += new System.EventHandler(this.buttonAllPumpsOff_Click);
             // 
@@ -194,9 +176,9 @@
             // 
             this.checkBoxODMonitor.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBoxODMonitor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.checkBoxODMonitor.Location = new System.Drawing.Point(11, 13);
+            this.checkBoxODMonitor.Location = new System.Drawing.Point(9, 16);
             this.checkBoxODMonitor.Name = "checkBoxODMonitor";
-            this.checkBoxODMonitor.Size = new System.Drawing.Size(55, 32);
+            this.checkBoxODMonitor.Size = new System.Drawing.Size(58, 27);
             this.checkBoxODMonitor.TabIndex = 8;
             this.checkBoxODMonitor.TabStop = false;
             this.checkBoxODMonitor.Text = "OD";
@@ -208,25 +190,25 @@
             // 
             this.checkBoxScaleMonitor.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBoxScaleMonitor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.checkBoxScaleMonitor.Location = new System.Drawing.Point(72, 13);
+            this.checkBoxScaleMonitor.Location = new System.Drawing.Point(75, 16);
             this.checkBoxScaleMonitor.Name = "checkBoxScaleMonitor";
-            this.checkBoxScaleMonitor.Size = new System.Drawing.Size(55, 32);
+            this.checkBoxScaleMonitor.Size = new System.Drawing.Size(55, 27);
             this.checkBoxScaleMonitor.TabIndex = 13;
             this.checkBoxScaleMonitor.TabStop = false;
-            this.checkBoxScaleMonitor.Text = "Scale";
+            this.checkBoxScaleMonitor.Text = "Scales";
             this.checkBoxScaleMonitor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxScaleMonitor.UseVisualStyleBackColor = true;
             this.checkBoxScaleMonitor.CheckedChanged += new System.EventHandler(this.checkBoxScaleMonitor_CheckedChanged);
             // 
             // groupBoxMonitors
             // 
+            this.groupBoxMonitors.Controls.Add(this.checkBoxScaleMonitor);
             this.groupBoxMonitors.Controls.Add(this.checkBoxODReader);
             this.groupBoxMonitors.Controls.Add(this.buttonRefreshODMonitor);
             this.groupBoxMonitors.Controls.Add(this.checkBoxODMonitor);
-            this.groupBoxMonitors.Controls.Add(this.checkBoxScaleMonitor);
             this.groupBoxMonitors.Location = new System.Drawing.Point(380, 12);
             this.groupBoxMonitors.Name = "groupBoxMonitors";
-            this.groupBoxMonitors.Size = new System.Drawing.Size(142, 67);
+            this.groupBoxMonitors.Size = new System.Drawing.Size(139, 88);
             this.groupBoxMonitors.TabIndex = 14;
             this.groupBoxMonitors.TabStop = false;
             this.groupBoxMonitors.Text = "Monitors";
@@ -234,23 +216,47 @@
             // checkBoxODReader
             // 
             this.checkBoxODReader.AutoSize = true;
-            this.checkBoxODReader.Location = new System.Drawing.Point(56, 46);
+            this.checkBoxODReader.Location = new System.Drawing.Point(46, 55);
             this.checkBoxODReader.Name = "checkBoxODReader";
-            this.checkBoxODReader.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxODReader.Size = new System.Drawing.Size(71, 17);
             this.checkBoxODReader.TabIndex = 6;
-            this.checkBoxODReader.Text = "OD Reader";
+            this.checkBoxODReader.Text = "Read OD";
             this.checkBoxODReader.UseVisualStyleBackColor = true;
             this.checkBoxODReader.CheckedChanged += new System.EventHandler(this.checkBoxODReader_CheckedChanged);
             // 
             // buttonRefreshODMonitor
             // 
             this.buttonRefreshODMonitor.Image = ((System.Drawing.Image)(resources.GetObject("buttonRefreshODMonitor.Image")));
-            this.buttonRefreshODMonitor.Location = new System.Drawing.Point(26, 44);
+            this.buttonRefreshODMonitor.Location = new System.Drawing.Point(9, 49);
             this.buttonRefreshODMonitor.Name = "buttonRefreshODMonitor";
-            this.buttonRefreshODMonitor.Size = new System.Drawing.Size(24, 20);
+            this.buttonRefreshODMonitor.Size = new System.Drawing.Size(27, 25);
             this.buttonRefreshODMonitor.TabIndex = 28;
             this.buttonRefreshODMonitor.UseVisualStyleBackColor = true;
             this.buttonRefreshODMonitor.Click += new System.EventHandler(this.buttonRefreshODMonitor_Click);
+            // 
+            // buttonResetScales
+            // 
+            this.buttonResetScales.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonResetScales.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonResetScales.Location = new System.Drawing.Point(56, 121);
+            this.buttonResetScales.Name = "buttonResetScales";
+            this.buttonResetScales.Size = new System.Drawing.Size(56, 27);
+            this.buttonResetScales.TabIndex = 30;
+            this.buttonResetScales.Text = "Reset";
+            this.buttonResetScales.UseVisualStyleBackColor = true;
+            this.buttonResetScales.Click += new System.EventHandler(this.buttonResetScales_Click);
+            // 
+            // buttonScalesValues
+            // 
+            this.buttonScalesValues.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonScalesValues.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonScalesValues.Location = new System.Drawing.Point(5, 121);
+            this.buttonScalesValues.Name = "buttonScalesValues";
+            this.buttonScalesValues.Size = new System.Drawing.Size(47, 27);
+            this.buttonScalesValues.TabIndex = 29;
+            this.buttonScalesValues.Text = "Read";
+            this.buttonScalesValues.UseVisualStyleBackColor = true;
+            this.buttonScalesValues.Click += new System.EventHandler(this.buttonScalesValues_Click);
             // 
             // groupBoxTurbidostatParameters
             // 
@@ -263,9 +269,9 @@
             this.groupBoxTurbidostatParameters.Controls.Add(this.label4);
             this.groupBoxTurbidostatParameters.Controls.Add(this.textBoxParameterTransferPeriod);
             this.groupBoxTurbidostatParameters.Controls.Add(this.label3);
-            this.groupBoxTurbidostatParameters.Location = new System.Drawing.Point(380, 85);
+            this.groupBoxTurbidostatParameters.Location = new System.Drawing.Point(380, 106);
             this.groupBoxTurbidostatParameters.Name = "groupBoxTurbidostatParameters";
-            this.groupBoxTurbidostatParameters.Size = new System.Drawing.Size(226, 108);
+            this.groupBoxTurbidostatParameters.Size = new System.Drawing.Size(226, 91);
             this.groupBoxTurbidostatParameters.TabIndex = 16;
             this.groupBoxTurbidostatParameters.TabStop = false;
             this.groupBoxTurbidostatParameters.Text = "Turbidostat Parameters";
@@ -274,7 +280,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(148, 82);
+            this.label5.Location = new System.Drawing.Point(151, 67);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 13);
             this.label5.TabIndex = 11;
@@ -282,9 +288,9 @@
             // 
             // textBoxMediaAirationPeriod
             // 
-            this.textBoxMediaAirationPeriod.Location = new System.Drawing.Point(110, 78);
+            this.textBoxMediaAirationPeriod.Location = new System.Drawing.Point(102, 64);
             this.textBoxMediaAirationPeriod.Name = "textBoxMediaAirationPeriod";
-            this.textBoxMediaAirationPeriod.Size = new System.Drawing.Size(32, 20);
+            this.textBoxMediaAirationPeriod.Size = new System.Drawing.Size(43, 20);
             this.textBoxMediaAirationPeriod.TabIndex = 10;
             this.textBoxMediaAirationPeriod.Text = "30";
             this.textBoxMediaAirationPeriod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -293,16 +299,16 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 82);
+            this.label6.Location = new System.Drawing.Point(7, 67);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 13);
+            this.label6.Size = new System.Drawing.Size(85, 13);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Media Airation Period";
+            this.label6.Text = "Medium aeration";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(123, 34);
+            this.label7.Location = new System.Drawing.Point(151, 21);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 13);
             this.label7.TabIndex = 8;
@@ -310,9 +316,9 @@
             // 
             // textBoxParameterLBDensity
             // 
-            this.textBoxParameterLBDensity.Location = new System.Drawing.Point(85, 31);
+            this.textBoxParameterLBDensity.Location = new System.Drawing.Point(102, 18);
             this.textBoxParameterLBDensity.Name = "textBoxParameterLBDensity";
-            this.textBoxParameterLBDensity.Size = new System.Drawing.Size(32, 20);
+            this.textBoxParameterLBDensity.Size = new System.Drawing.Size(43, 20);
             this.textBoxParameterLBDensity.TabIndex = 7;
             this.textBoxParameterLBDensity.Text = "1.375";
             this.textBoxParameterLBDensity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -320,16 +326,16 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 34);
+            this.label8.Location = new System.Drawing.Point(7, 21);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 13);
+            this.label8.Size = new System.Drawing.Size(80, 13);
             this.label8.TabIndex = 6;
-            this.label8.Text = "LB Density:";
+            this.label8.Text = "Medium density";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(123, 58);
+            this.label4.Location = new System.Drawing.Point(151, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 2;
@@ -337,18 +343,18 @@
             // 
             // textBoxParameterTransferPeriod
             // 
-            this.textBoxParameterTransferPeriod.Location = new System.Drawing.Point(85, 55);
+            this.textBoxParameterTransferPeriod.Location = new System.Drawing.Point(102, 41);
             this.textBoxParameterTransferPeriod.Name = "textBoxParameterTransferPeriod";
-            this.textBoxParameterTransferPeriod.Size = new System.Drawing.Size(32, 20);
+            this.textBoxParameterTransferPeriod.Size = new System.Drawing.Size(43, 20);
             this.textBoxParameterTransferPeriod.TabIndex = 1;
-            this.textBoxParameterTransferPeriod.Text = "8";
+            this.textBoxParameterTransferPeriod.Text = "2";
             this.textBoxParameterTransferPeriod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxParameterTransferPeriod.TextChanged += new System.EventHandler(this.textBoxParameterTransferPeriod_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 59);
+            this.label3.Location = new System.Drawing.Point(6, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 0;
@@ -356,23 +362,23 @@
             // 
             // textBoxManualCommandRelaybox
             // 
-            this.textBoxManualCommandRelaybox.Location = new System.Drawing.Point(466, 213);
+            this.textBoxManualCommandRelaybox.Location = new System.Drawing.Point(445, 203);
             this.textBoxManualCommandRelaybox.Name = "textBoxManualCommandRelaybox";
-            this.textBoxManualCommandRelaybox.Size = new System.Drawing.Size(41, 20);
+            this.textBoxManualCommandRelaybox.Size = new System.Drawing.Size(35, 20);
             this.textBoxManualCommandRelaybox.TabIndex = 17;
             // 
             // textBoxManualCommandChannel
             // 
-            this.textBoxManualCommandChannel.Location = new System.Drawing.Point(513, 213);
+            this.textBoxManualCommandChannel.Location = new System.Drawing.Point(485, 203);
             this.textBoxManualCommandChannel.Name = "textBoxManualCommandChannel";
-            this.textBoxManualCommandChannel.Size = new System.Drawing.Size(40, 20);
+            this.textBoxManualCommandChannel.Size = new System.Drawing.Size(35, 20);
             this.textBoxManualCommandChannel.TabIndex = 18;
             // 
             // buttonManualCommandOn
             // 
-            this.buttonManualCommandOn.Location = new System.Drawing.Point(559, 210);
+            this.buttonManualCommandOn.Location = new System.Drawing.Point(524, 202);
             this.buttonManualCommandOn.Name = "buttonManualCommandOn";
-            this.buttonManualCommandOn.Size = new System.Drawing.Size(35, 23);
+            this.buttonManualCommandOn.Size = new System.Drawing.Size(35, 22);
             this.buttonManualCommandOn.TabIndex = 19;
             this.buttonManualCommandOn.Text = "ON";
             this.buttonManualCommandOn.UseVisualStyleBackColor = true;
@@ -380,9 +386,9 @@
             // 
             // buttonManualCommandOff
             // 
-            this.buttonManualCommandOff.Location = new System.Drawing.Point(559, 239);
+            this.buttonManualCommandOff.Location = new System.Drawing.Point(562, 202);
             this.buttonManualCommandOff.Name = "buttonManualCommandOff";
-            this.buttonManualCommandOff.Size = new System.Drawing.Size(35, 23);
+            this.buttonManualCommandOff.Size = new System.Drawing.Size(35, 22);
             this.buttonManualCommandOff.TabIndex = 20;
             this.buttonManualCommandOff.Text = "OFF";
             this.buttonManualCommandOff.UseVisualStyleBackColor = true;
@@ -390,50 +396,30 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.textBoxPressurizeMediaReservoirDuration);
+            this.groupBox1.Controls.Add(this.buttonPressurizeMediaReservoir);
+            this.groupBox1.Controls.Add(this.buttonWasteIBB);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.textBoxWasteIntoSinkDuration);
+            this.groupBox1.Controls.Add(this.buttonStartWasteIntoSink);
+            this.groupBox1.Controls.Add(this.buttonWasteIBA);
+            this.groupBox1.Controls.Add(this.textBoxKeepLevelBCultureID);
+            this.groupBox1.Controls.Add(this.textBoxKeepLevelACultureID);
             this.groupBox1.Controls.Add(this.buttonFillTubeBFast);
             this.groupBox1.Controls.Add(this.buttonFillTubeAFast);
             this.groupBox1.Controls.Add(this.textBoxTransferBtoACultureIDs);
             this.groupBox1.Controls.Add(this.textBoxTransferAtoBCultureIDs);
-            this.groupBox1.Controls.Add(this.buttonSetODB);
-            this.groupBox1.Controls.Add(this.textBoxSetODCultureID);
-            this.groupBox1.Controls.Add(this.textBoxSetOD);
-            this.groupBox1.Controls.Add(this.buttonSetODA);
-            this.groupBox1.Controls.Add(this.textBoxAddIPTGIntoIBAPushBackTime);
-            this.groupBox1.Controls.Add(this.textBoxAddIPTGIntoIBAGrams);
-            this.groupBox1.Controls.Add(this.buttonAddIPTGIntoIBB);
-            this.groupBox1.Controls.Add(this.buttonAddIPTGIntoIBA);
-            this.groupBox1.Controls.Add(this.textBoxAddDrug2IntoIBAPushBackTime);
-            this.groupBox1.Controls.Add(this.textBoxAddDrug2IntoIBAGrams);
-            this.groupBox1.Controls.Add(this.buttonAddDrug2IntoIBB);
-            this.groupBox1.Controls.Add(this.buttonAddDrug2IntoIBA);
-            this.groupBox1.Controls.Add(this.textBoxAddDrug1IntoIBBPushBackTime);
-            this.groupBox1.Controls.Add(this.textBoxAddDrug1IntoIBAGrams);
-            this.groupBox1.Controls.Add(this.buttonAddDrug1IntoIBB);
-            this.groupBox1.Controls.Add(this.buttonAddDrug1IntoIBA);
             this.groupBox1.Controls.Add(this.buttonMakeBleachIBB);
             this.groupBox1.Controls.Add(this.textBoxMakeBleachIBAGrams);
             this.groupBox1.Controls.Add(this.buttonMakeBleachIBA);
-            this.groupBox1.Controls.Add(this.textBoxDiluteTubeBCultureID);
-            this.groupBox1.Controls.Add(this.textBoxDiluteTubeBTime);
-            this.groupBox1.Controls.Add(this.buttonDiluteTubeB);
-            this.groupBox1.Controls.Add(this.textBoxDiluteTubeACultureID);
-            this.groupBox1.Controls.Add(this.textBoxDiluteTubeATime);
-            this.groupBox1.Controls.Add(this.buttonDiluteTubeA);
-            this.groupBox1.Controls.Add(this.textBoxWashTubeBCycle);
-            this.groupBox1.Controls.Add(this.textBoxWashTubeACycle);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.buttonMakeLBInIBB);
             this.groupBox1.Controls.Add(this.textBoxMakeLBInIBAGrams);
             this.groupBox1.Controls.Add(this.buttonMakeLBInIBA);
-            this.groupBox1.Controls.Add(this.textBoxWashTubeBCultureID);
-            this.groupBox1.Controls.Add(this.textBoxWashTubeBTime);
-            this.groupBox1.Controls.Add(this.buttonWashTubeB);
-            this.groupBox1.Controls.Add(this.textBoxWashTubeACultureID);
-            this.groupBox1.Controls.Add(this.textBoxWashTubeATime);
-            this.groupBox1.Controls.Add(this.buttonWashTubeA);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBoxFillMediaIntoIBAPushBackTime);
             this.groupBox1.Controls.Add(this.buttonFillBleachIntoIBB);
             this.groupBox1.Controls.Add(this.buttonWaterIntoIBB);
             this.groupBox1.Controls.Add(this.buttonFillMediaIntoIBB);
@@ -447,10 +433,8 @@
             this.groupBox1.Controls.Add(this.buttonKeepLevelTubeB);
             this.groupBox1.Controls.Add(this.textBoxKeepLevelTubeATime);
             this.groupBox1.Controls.Add(this.buttonKeepLevelTubeA);
-            this.groupBox1.Controls.Add(this.textBoxEvacuateTubeBCultureID);
             this.groupBox1.Controls.Add(this.textBoxEvacuateTubeBTime);
             this.groupBox1.Controls.Add(this.buttonEvacuateTubeB);
-            this.groupBox1.Controls.Add(this.textBoxEvacuateTubeACultureID);
             this.groupBox1.Controls.Add(this.textBoxEvacuateTubeATime);
             this.groupBox1.Controls.Add(this.buttonEvacuateTubeA);
             this.groupBox1.Controls.Add(this.textBoxFillTubeBCultureID);
@@ -467,11 +451,125 @@
             this.groupBox1.Controls.Add(this.buttonTransferAtoB);
             this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(362, 664);
+            this.groupBox1.Size = new System.Drawing.Size(362, 522);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Native Turbidostat Functions";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(185, 336);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(61, 13);
+            this.label16.TabIndex = 97;
+            this.label16.Text = "Volume (ml)";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(185, 152);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(61, 13);
+            this.label15.TabIndex = 96;
+            this.label15.Text = "Time (secs)";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(260, 306);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(56, 13);
+            this.label14.TabIndex = 95;
+            this.label14.Text = "time (mins)";
+            // 
+            // textBoxPressurizeMediaReservoirDuration
+            // 
+            this.textBoxPressurizeMediaReservoirDuration.Location = new System.Drawing.Point(177, 302);
+            this.textBoxPressurizeMediaReservoirDuration.Name = "textBoxPressurizeMediaReservoirDuration";
+            this.textBoxPressurizeMediaReservoirDuration.Size = new System.Drawing.Size(77, 20);
+            this.textBoxPressurizeMediaReservoirDuration.TabIndex = 94;
+            this.textBoxPressurizeMediaReservoirDuration.Text = "30";
+            this.textBoxPressurizeMediaReservoirDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // buttonPressurizeMediaReservoir
+            // 
+            this.buttonPressurizeMediaReservoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPressurizeMediaReservoir.Location = new System.Drawing.Point(6, 299);
+            this.buttonPressurizeMediaReservoir.Name = "buttonPressurizeMediaReservoir";
+            this.buttonPressurizeMediaReservoir.Size = new System.Drawing.Size(153, 26);
+            this.buttonPressurizeMediaReservoir.TabIndex = 93;
+            this.buttonPressurizeMediaReservoir.Text = "Pressurize Media Reservoir";
+            this.buttonPressurizeMediaReservoir.UseVisualStyleBackColor = true;
+            this.buttonPressurizeMediaReservoir.Click += new System.EventHandler(this.buttonPressurizeMediaReservoir_Click);
+            // 
+            // buttonWasteIBB
+            // 
+            this.buttonWasteIBB.Location = new System.Drawing.Point(281, 459);
+            this.buttonWasteIBB.Name = "buttonWasteIBB";
+            this.buttonWasteIBB.Size = new System.Drawing.Size(71, 51);
+            this.buttonWasteIBB.TabIndex = 7;
+            this.buttonWasteIBB.Text = "Waste IBB";
+            this.buttonWasteIBB.UseVisualStyleBackColor = true;
+            this.buttonWasteIBB.Click += new System.EventHandler(this.buttonWasteIBB_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(260, 279);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(56, 13);
+            this.label13.TabIndex = 92;
+            this.label13.Text = "time (mins)";
+            // 
+            // textBoxWasteIntoSinkDuration
+            // 
+            this.textBoxWasteIntoSinkDuration.Location = new System.Drawing.Point(177, 276);
+            this.textBoxWasteIntoSinkDuration.Name = "textBoxWasteIntoSinkDuration";
+            this.textBoxWasteIntoSinkDuration.Size = new System.Drawing.Size(77, 20);
+            this.textBoxWasteIntoSinkDuration.TabIndex = 91;
+            this.textBoxWasteIntoSinkDuration.Text = "60";
+            this.textBoxWasteIntoSinkDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // buttonStartWasteIntoSink
+            // 
+            this.buttonStartWasteIntoSink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStartWasteIntoSink.Location = new System.Drawing.Point(6, 273);
+            this.buttonStartWasteIntoSink.Name = "buttonStartWasteIntoSink";
+            this.buttonStartWasteIntoSink.Size = new System.Drawing.Size(153, 26);
+            this.buttonStartWasteIntoSink.TabIndex = 90;
+            this.buttonStartWasteIntoSink.Text = "Start Waste Into Sink";
+            this.buttonStartWasteIntoSink.UseVisualStyleBackColor = true;
+            this.buttonStartWasteIntoSink.Click += new System.EventHandler(this.buttonStartWasteIntoSink_Click);
+            // 
+            // buttonWasteIBA
+            // 
+            this.buttonWasteIBA.Location = new System.Drawing.Point(281, 404);
+            this.buttonWasteIBA.Name = "buttonWasteIBA";
+            this.buttonWasteIBA.Size = new System.Drawing.Size(71, 49);
+            this.buttonWasteIBA.TabIndex = 6;
+            this.buttonWasteIBA.Text = "Waste IBA";
+            this.buttonWasteIBA.UseVisualStyleBackColor = true;
+            this.buttonWasteIBA.Click += new System.EventHandler(this.buttonWasteIBA_Click);
+            // 
+            // textBoxKeepLevelBCultureID
+            // 
+            this.textBoxKeepLevelBCultureID.Location = new System.Drawing.Point(260, 250);
+            this.textBoxKeepLevelBCultureID.Name = "textBoxKeepLevelBCultureID";
+            this.textBoxKeepLevelBCultureID.Size = new System.Drawing.Size(37, 20);
+            this.textBoxKeepLevelBCultureID.TabIndex = 89;
+            this.textBoxKeepLevelBCultureID.Text = "1:8";
+            this.textBoxKeepLevelBCultureID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxKeepLevelACultureID
+            // 
+            this.textBoxKeepLevelACultureID.Location = new System.Drawing.Point(260, 223);
+            this.textBoxKeepLevelACultureID.Name = "textBoxKeepLevelACultureID";
+            this.textBoxKeepLevelACultureID.Size = new System.Drawing.Size(37, 20);
+            this.textBoxKeepLevelACultureID.TabIndex = 88;
+            this.textBoxKeepLevelACultureID.Text = "1:8";
+            this.textBoxKeepLevelACultureID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // buttonFillTubeBFast
             // 
@@ -513,161 +611,9 @@
             this.textBoxTransferAtoBCultureIDs.Text = "1:8";
             this.textBoxTransferAtoBCultureIDs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // buttonSetODB
-            // 
-            this.buttonSetODB.Location = new System.Drawing.Point(82, 364);
-            this.buttonSetODB.Name = "buttonSetODB";
-            this.buttonSetODB.Size = new System.Drawing.Size(77, 28);
-            this.buttonSetODB.TabIndex = 83;
-            this.buttonSetODB.Text = "Set OD B";
-            this.buttonSetODB.UseVisualStyleBackColor = true;
-            this.buttonSetODB.Click += new System.EventHandler(this.buttonSetODB_Click);
-            // 
-            // textBoxSetODCultureID
-            // 
-            this.textBoxSetODCultureID.Location = new System.Drawing.Point(260, 369);
-            this.textBoxSetODCultureID.Name = "textBoxSetODCultureID";
-            this.textBoxSetODCultureID.Size = new System.Drawing.Size(37, 20);
-            this.textBoxSetODCultureID.TabIndex = 82;
-            this.textBoxSetODCultureID.Text = "1";
-            this.textBoxSetODCultureID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxSetOD
-            // 
-            this.textBoxSetOD.Location = new System.Drawing.Point(177, 369);
-            this.textBoxSetOD.Name = "textBoxSetOD";
-            this.textBoxSetOD.Size = new System.Drawing.Size(77, 20);
-            this.textBoxSetOD.TabIndex = 80;
-            this.textBoxSetOD.Text = "0.15";
-            this.textBoxSetOD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // buttonSetODA
-            // 
-            this.buttonSetODA.Location = new System.Drawing.Point(6, 364);
-            this.buttonSetODA.Name = "buttonSetODA";
-            this.buttonSetODA.Size = new System.Drawing.Size(77, 28);
-            this.buttonSetODA.TabIndex = 79;
-            this.buttonSetODA.Text = "Set OD A";
-            this.buttonSetODA.UseVisualStyleBackColor = true;
-            this.buttonSetODA.Click += new System.EventHandler(this.buttonSetODA_Click);
-            // 
-            // textBoxAddIPTGIntoIBAPushBackTime
-            // 
-            this.textBoxAddIPTGIntoIBAPushBackTime.Location = new System.Drawing.Point(260, 639);
-            this.textBoxAddIPTGIntoIBAPushBackTime.Name = "textBoxAddIPTGIntoIBAPushBackTime";
-            this.textBoxAddIPTGIntoIBAPushBackTime.Size = new System.Drawing.Size(37, 20);
-            this.textBoxAddIPTGIntoIBAPushBackTime.TabIndex = 78;
-            this.textBoxAddIPTGIntoIBAPushBackTime.Text = "30";
-            this.textBoxAddIPTGIntoIBAPushBackTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxAddIPTGIntoIBAGrams
-            // 
-            this.textBoxAddIPTGIntoIBAGrams.Location = new System.Drawing.Point(177, 639);
-            this.textBoxAddIPTGIntoIBAGrams.Name = "textBoxAddIPTGIntoIBAGrams";
-            this.textBoxAddIPTGIntoIBAGrams.Size = new System.Drawing.Size(77, 20);
-            this.textBoxAddIPTGIntoIBAGrams.TabIndex = 77;
-            this.textBoxAddIPTGIntoIBAGrams.Text = "20";
-            this.textBoxAddIPTGIntoIBAGrams.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // buttonAddIPTGIntoIBB
-            // 
-            this.buttonAddIPTGIntoIBB.Location = new System.Drawing.Point(125, 634);
-            this.buttonAddIPTGIntoIBB.Name = "buttonAddIPTGIntoIBB";
-            this.buttonAddIPTGIntoIBB.Size = new System.Drawing.Size(34, 28);
-            this.buttonAddIPTGIntoIBB.TabIndex = 76;
-            this.buttonAddIPTGIntoIBB.Text = "IBB";
-            this.buttonAddIPTGIntoIBB.UseVisualStyleBackColor = true;
-            this.buttonAddIPTGIntoIBB.Click += new System.EventHandler(this.buttonAddIPTGIntoIBB_Click);
-            // 
-            // buttonAddIPTGIntoIBA
-            // 
-            this.buttonAddIPTGIntoIBA.Location = new System.Drawing.Point(6, 634);
-            this.buttonAddIPTGIntoIBA.Name = "buttonAddIPTGIntoIBA";
-            this.buttonAddIPTGIntoIBA.Size = new System.Drawing.Size(117, 28);
-            this.buttonAddIPTGIntoIBA.TabIndex = 75;
-            this.buttonAddIPTGIntoIBA.Text = "Add IPTG into IBA";
-            this.buttonAddIPTGIntoIBA.UseVisualStyleBackColor = true;
-            this.buttonAddIPTGIntoIBA.Click += new System.EventHandler(this.buttonAddIPTGIntoIBA_Click);
-            // 
-            // textBoxAddDrug2IntoIBAPushBackTime
-            // 
-            this.textBoxAddDrug2IntoIBAPushBackTime.Location = new System.Drawing.Point(260, 612);
-            this.textBoxAddDrug2IntoIBAPushBackTime.Name = "textBoxAddDrug2IntoIBAPushBackTime";
-            this.textBoxAddDrug2IntoIBAPushBackTime.Size = new System.Drawing.Size(37, 20);
-            this.textBoxAddDrug2IntoIBAPushBackTime.TabIndex = 74;
-            this.textBoxAddDrug2IntoIBAPushBackTime.Text = "30";
-            this.textBoxAddDrug2IntoIBAPushBackTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxAddDrug2IntoIBAGrams
-            // 
-            this.textBoxAddDrug2IntoIBAGrams.Location = new System.Drawing.Point(177, 612);
-            this.textBoxAddDrug2IntoIBAGrams.Name = "textBoxAddDrug2IntoIBAGrams";
-            this.textBoxAddDrug2IntoIBAGrams.Size = new System.Drawing.Size(77, 20);
-            this.textBoxAddDrug2IntoIBAGrams.TabIndex = 73;
-            this.textBoxAddDrug2IntoIBAGrams.Text = "20";
-            this.textBoxAddDrug2IntoIBAGrams.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // buttonAddDrug2IntoIBB
-            // 
-            this.buttonAddDrug2IntoIBB.Location = new System.Drawing.Point(125, 607);
-            this.buttonAddDrug2IntoIBB.Name = "buttonAddDrug2IntoIBB";
-            this.buttonAddDrug2IntoIBB.Size = new System.Drawing.Size(34, 28);
-            this.buttonAddDrug2IntoIBB.TabIndex = 72;
-            this.buttonAddDrug2IntoIBB.Text = "IBB";
-            this.buttonAddDrug2IntoIBB.UseVisualStyleBackColor = true;
-            this.buttonAddDrug2IntoIBB.Click += new System.EventHandler(this.buttonAddDrug2IntoIBB_Click);
-            // 
-            // buttonAddDrug2IntoIBA
-            // 
-            this.buttonAddDrug2IntoIBA.Location = new System.Drawing.Point(6, 607);
-            this.buttonAddDrug2IntoIBA.Name = "buttonAddDrug2IntoIBA";
-            this.buttonAddDrug2IntoIBA.Size = new System.Drawing.Size(117, 28);
-            this.buttonAddDrug2IntoIBA.TabIndex = 71;
-            this.buttonAddDrug2IntoIBA.Text = "Add Drug 2 into IBA";
-            this.buttonAddDrug2IntoIBA.UseVisualStyleBackColor = true;
-            this.buttonAddDrug2IntoIBA.Click += new System.EventHandler(this.buttonAddDrug2IntoIBA_Click);
-            // 
-            // textBoxAddDrug1IntoIBBPushBackTime
-            // 
-            this.textBoxAddDrug1IntoIBBPushBackTime.Location = new System.Drawing.Point(260, 585);
-            this.textBoxAddDrug1IntoIBBPushBackTime.Name = "textBoxAddDrug1IntoIBBPushBackTime";
-            this.textBoxAddDrug1IntoIBBPushBackTime.Size = new System.Drawing.Size(37, 20);
-            this.textBoxAddDrug1IntoIBBPushBackTime.TabIndex = 70;
-            this.textBoxAddDrug1IntoIBBPushBackTime.Text = "30";
-            this.textBoxAddDrug1IntoIBBPushBackTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxAddDrug1IntoIBAGrams
-            // 
-            this.textBoxAddDrug1IntoIBAGrams.Location = new System.Drawing.Point(177, 585);
-            this.textBoxAddDrug1IntoIBAGrams.Name = "textBoxAddDrug1IntoIBAGrams";
-            this.textBoxAddDrug1IntoIBAGrams.Size = new System.Drawing.Size(77, 20);
-            this.textBoxAddDrug1IntoIBAGrams.TabIndex = 69;
-            this.textBoxAddDrug1IntoIBAGrams.Text = "20";
-            this.textBoxAddDrug1IntoIBAGrams.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // buttonAddDrug1IntoIBB
-            // 
-            this.buttonAddDrug1IntoIBB.Location = new System.Drawing.Point(125, 580);
-            this.buttonAddDrug1IntoIBB.Name = "buttonAddDrug1IntoIBB";
-            this.buttonAddDrug1IntoIBB.Size = new System.Drawing.Size(34, 28);
-            this.buttonAddDrug1IntoIBB.TabIndex = 68;
-            this.buttonAddDrug1IntoIBB.Text = "IBB";
-            this.buttonAddDrug1IntoIBB.UseVisualStyleBackColor = true;
-            this.buttonAddDrug1IntoIBB.Click += new System.EventHandler(this.buttonAddDrug1IntoIBB_Click);
-            // 
-            // buttonAddDrug1IntoIBA
-            // 
-            this.buttonAddDrug1IntoIBA.Location = new System.Drawing.Point(6, 580);
-            this.buttonAddDrug1IntoIBA.Name = "buttonAddDrug1IntoIBA";
-            this.buttonAddDrug1IntoIBA.Size = new System.Drawing.Size(117, 28);
-            this.buttonAddDrug1IntoIBA.TabIndex = 67;
-            this.buttonAddDrug1IntoIBA.Text = "Add Drug 1 into IBA";
-            this.buttonAddDrug1IntoIBA.UseVisualStyleBackColor = true;
-            this.buttonAddDrug1IntoIBA.Click += new System.EventHandler(this.buttonAddDrug1IntoIBA_Click);
-            // 
             // buttonMakeBleachIBB
             // 
-            this.buttonMakeBleachIBB.Location = new System.Drawing.Point(125, 553);
+            this.buttonMakeBleachIBB.Location = new System.Drawing.Point(137, 483);
             this.buttonMakeBleachIBB.Name = "buttonMakeBleachIBB";
             this.buttonMakeBleachIBB.Size = new System.Drawing.Size(34, 28);
             this.buttonMakeBleachIBB.TabIndex = 66;
@@ -677,7 +623,7 @@
             // 
             // textBoxMakeBleachIBAGrams
             // 
-            this.textBoxMakeBleachIBAGrams.Location = new System.Drawing.Point(177, 558);
+            this.textBoxMakeBleachIBAGrams.Location = new System.Drawing.Point(177, 488);
             this.textBoxMakeBleachIBAGrams.Name = "textBoxMakeBleachIBAGrams";
             this.textBoxMakeBleachIBAGrams.Size = new System.Drawing.Size(77, 20);
             this.textBoxMakeBleachIBAGrams.TabIndex = 65;
@@ -686,87 +632,13 @@
             // 
             // buttonMakeBleachIBA
             // 
-            this.buttonMakeBleachIBA.Location = new System.Drawing.Point(6, 553);
+            this.buttonMakeBleachIBA.Location = new System.Drawing.Point(6, 483);
             this.buttonMakeBleachIBA.Name = "buttonMakeBleachIBA";
-            this.buttonMakeBleachIBA.Size = new System.Drawing.Size(117, 28);
+            this.buttonMakeBleachIBA.Size = new System.Drawing.Size(128, 28);
             this.buttonMakeBleachIBA.TabIndex = 64;
-            this.buttonMakeBleachIBA.Text = "Make Bleach in IBA";
+            this.buttonMakeBleachIBA.Text = "Make 1x bleach in IBA";
             this.buttonMakeBleachIBA.UseVisualStyleBackColor = true;
             this.buttonMakeBleachIBA.Click += new System.EventHandler(this.buttonMakeBleachIBA_Click);
-            // 
-            // textBoxDiluteTubeBCultureID
-            // 
-            this.textBoxDiluteTubeBCultureID.Location = new System.Drawing.Point(260, 342);
-            this.textBoxDiluteTubeBCultureID.Name = "textBoxDiluteTubeBCultureID";
-            this.textBoxDiluteTubeBCultureID.Size = new System.Drawing.Size(37, 20);
-            this.textBoxDiluteTubeBCultureID.TabIndex = 63;
-            this.textBoxDiluteTubeBCultureID.Text = "1:8";
-            this.textBoxDiluteTubeBCultureID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxDiluteTubeBTime
-            // 
-            this.textBoxDiluteTubeBTime.Location = new System.Drawing.Point(177, 342);
-            this.textBoxDiluteTubeBTime.Name = "textBoxDiluteTubeBTime";
-            this.textBoxDiluteTubeBTime.Size = new System.Drawing.Size(77, 20);
-            this.textBoxDiluteTubeBTime.TabIndex = 62;
-            this.textBoxDiluteTubeBTime.Text = "3";
-            this.textBoxDiluteTubeBTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // buttonDiluteTubeB
-            // 
-            this.buttonDiluteTubeB.Location = new System.Drawing.Point(6, 337);
-            this.buttonDiluteTubeB.Name = "buttonDiluteTubeB";
-            this.buttonDiluteTubeB.Size = new System.Drawing.Size(153, 28);
-            this.buttonDiluteTubeB.TabIndex = 61;
-            this.buttonDiluteTubeB.Text = "Dilute Tube B";
-            this.buttonDiluteTubeB.UseVisualStyleBackColor = true;
-            this.buttonDiluteTubeB.Click += new System.EventHandler(this.buttonDiluteTubeB_Click);
-            // 
-            // textBoxDiluteTubeACultureID
-            // 
-            this.textBoxDiluteTubeACultureID.Location = new System.Drawing.Point(260, 315);
-            this.textBoxDiluteTubeACultureID.Name = "textBoxDiluteTubeACultureID";
-            this.textBoxDiluteTubeACultureID.Size = new System.Drawing.Size(37, 20);
-            this.textBoxDiluteTubeACultureID.TabIndex = 60;
-            this.textBoxDiluteTubeACultureID.Text = "1:8";
-            this.textBoxDiluteTubeACultureID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxDiluteTubeATime
-            // 
-            this.textBoxDiluteTubeATime.Location = new System.Drawing.Point(177, 315);
-            this.textBoxDiluteTubeATime.Name = "textBoxDiluteTubeATime";
-            this.textBoxDiluteTubeATime.Size = new System.Drawing.Size(77, 20);
-            this.textBoxDiluteTubeATime.TabIndex = 59;
-            this.textBoxDiluteTubeATime.Text = "3";
-            this.textBoxDiluteTubeATime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // buttonDiluteTubeA
-            // 
-            this.buttonDiluteTubeA.Location = new System.Drawing.Point(6, 310);
-            this.buttonDiluteTubeA.Name = "buttonDiluteTubeA";
-            this.buttonDiluteTubeA.Size = new System.Drawing.Size(153, 28);
-            this.buttonDiluteTubeA.TabIndex = 58;
-            this.buttonDiluteTubeA.Text = "Dilute Tube A";
-            this.buttonDiluteTubeA.UseVisualStyleBackColor = true;
-            this.buttonDiluteTubeA.Click += new System.EventHandler(this.buttonDiluteTubeA_Click);
-            // 
-            // textBoxWashTubeBCycle
-            // 
-            this.textBoxWashTubeBCycle.Location = new System.Drawing.Point(311, 288);
-            this.textBoxWashTubeBCycle.Name = "textBoxWashTubeBCycle";
-            this.textBoxWashTubeBCycle.Size = new System.Drawing.Size(37, 20);
-            this.textBoxWashTubeBCycle.TabIndex = 49;
-            this.textBoxWashTubeBCycle.Text = "1";
-            this.textBoxWashTubeBCycle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxWashTubeACycle
-            // 
-            this.textBoxWashTubeACycle.Location = new System.Drawing.Point(311, 261);
-            this.textBoxWashTubeACycle.Name = "textBoxWashTubeACycle";
-            this.textBoxWashTubeACycle.Size = new System.Drawing.Size(37, 20);
-            this.textBoxWashTubeACycle.TabIndex = 48;
-            this.textBoxWashTubeACycle.Text = "1";
-            this.textBoxWashTubeACycle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label11
             // 
@@ -777,18 +649,9 @@
             this.label11.TabIndex = 47;
             this.label11.Text = "cycle";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(165, 520);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
-            this.label2.TabIndex = 46;
-            this.label2.Text = "total amount (grams)";
-            // 
             // buttonMakeLBInIBB
             // 
-            this.buttonMakeLBInIBB.Location = new System.Drawing.Point(125, 526);
+            this.buttonMakeLBInIBB.Location = new System.Drawing.Point(137, 454);
             this.buttonMakeLBInIBB.Name = "buttonMakeLBInIBB";
             this.buttonMakeLBInIBB.Size = new System.Drawing.Size(34, 28);
             this.buttonMakeLBInIBB.TabIndex = 45;
@@ -798,7 +661,7 @@
             // 
             // textBoxMakeLBInIBAGrams
             // 
-            this.textBoxMakeLBInIBAGrams.Location = new System.Drawing.Point(177, 531);
+            this.textBoxMakeLBInIBAGrams.Location = new System.Drawing.Point(177, 459);
             this.textBoxMakeLBInIBAGrams.Name = "textBoxMakeLBInIBAGrams";
             this.textBoxMakeLBInIBAGrams.Size = new System.Drawing.Size(77, 20);
             this.textBoxMakeLBInIBAGrams.TabIndex = 44;
@@ -807,91 +670,24 @@
             // 
             // buttonMakeLBInIBA
             // 
-            this.buttonMakeLBInIBA.Location = new System.Drawing.Point(6, 526);
+            this.buttonMakeLBInIBA.Location = new System.Drawing.Point(6, 454);
             this.buttonMakeLBInIBA.Name = "buttonMakeLBInIBA";
-            this.buttonMakeLBInIBA.Size = new System.Drawing.Size(117, 28);
+            this.buttonMakeLBInIBA.Size = new System.Drawing.Size(128, 28);
             this.buttonMakeLBInIBA.TabIndex = 43;
-            this.buttonMakeLBInIBA.Text = "Make LB in IBA";
+            this.buttonMakeLBInIBA.Text = "Make 1x TSB in IBA";
             this.buttonMakeLBInIBA.UseVisualStyleBackColor = true;
             this.buttonMakeLBInIBA.Click += new System.EventHandler(this.buttonMakeLBInIBA_Click);
             // 
-            // textBoxWashTubeBCultureID
-            // 
-            this.textBoxWashTubeBCultureID.Location = new System.Drawing.Point(263, 288);
-            this.textBoxWashTubeBCultureID.Name = "textBoxWashTubeBCultureID";
-            this.textBoxWashTubeBCultureID.Size = new System.Drawing.Size(34, 20);
-            this.textBoxWashTubeBCultureID.TabIndex = 42;
-            this.textBoxWashTubeBCultureID.Text = "1:8";
-            this.textBoxWashTubeBCultureID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxWashTubeBTime
-            // 
-            this.textBoxWashTubeBTime.Location = new System.Drawing.Point(177, 288);
-            this.textBoxWashTubeBTime.Name = "textBoxWashTubeBTime";
-            this.textBoxWashTubeBTime.Size = new System.Drawing.Size(77, 20);
-            this.textBoxWashTubeBTime.TabIndex = 41;
-            this.textBoxWashTubeBTime.Text = "20";
-            this.textBoxWashTubeBTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // buttonWashTubeB
-            // 
-            this.buttonWashTubeB.Location = new System.Drawing.Point(6, 283);
-            this.buttonWashTubeB.Name = "buttonWashTubeB";
-            this.buttonWashTubeB.Size = new System.Drawing.Size(153, 28);
-            this.buttonWashTubeB.TabIndex = 40;
-            this.buttonWashTubeB.Text = "Wash Tube B";
-            this.buttonWashTubeB.UseVisualStyleBackColor = true;
-            this.buttonWashTubeB.Click += new System.EventHandler(this.buttonWashTubeB_Click);
-            // 
-            // textBoxWashTubeACultureID
-            // 
-            this.textBoxWashTubeACultureID.Location = new System.Drawing.Point(263, 261);
-            this.textBoxWashTubeACultureID.Name = "textBoxWashTubeACultureID";
-            this.textBoxWashTubeACultureID.Size = new System.Drawing.Size(34, 20);
-            this.textBoxWashTubeACultureID.TabIndex = 39;
-            this.textBoxWashTubeACultureID.Text = "1:8";
-            this.textBoxWashTubeACultureID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxWashTubeATime
-            // 
-            this.textBoxWashTubeATime.Location = new System.Drawing.Point(177, 261);
-            this.textBoxWashTubeATime.Name = "textBoxWashTubeATime";
-            this.textBoxWashTubeATime.Size = new System.Drawing.Size(77, 20);
-            this.textBoxWashTubeATime.TabIndex = 38;
-            this.textBoxWashTubeATime.Text = "20";
-            this.textBoxWashTubeATime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // buttonWashTubeA
-            // 
-            this.buttonWashTubeA.Location = new System.Drawing.Point(6, 256);
-            this.buttonWashTubeA.Name = "buttonWashTubeA";
-            this.buttonWashTubeA.Size = new System.Drawing.Size(153, 28);
-            this.buttonWashTubeA.TabIndex = 37;
-            this.buttonWashTubeA.Text = "Wash Tube A";
-            this.buttonWashTubeA.UseVisualStyleBackColor = true;
-            this.buttonWashTubeA.Click += new System.EventHandler(this.buttonWashTubeA_Click);
-            // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(248, 395);
+            this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 27);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "push back (secs)";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxFillMediaIntoIBAPushBackTime
-            // 
-            this.textBoxFillMediaIntoIBAPushBackTime.Location = new System.Drawing.Point(260, 423);
-            this.textBoxFillMediaIntoIBAPushBackTime.Name = "textBoxFillMediaIntoIBAPushBackTime";
-            this.textBoxFillMediaIntoIBAPushBackTime.Size = new System.Drawing.Size(37, 20);
-            this.textBoxFillMediaIntoIBAPushBackTime.TabIndex = 35;
-            this.textBoxFillMediaIntoIBAPushBackTime.Text = "30";
-            this.textBoxFillMediaIntoIBAPushBackTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 98;
             // 
             // buttonFillBleachIntoIBB
             // 
-            this.buttonFillBleachIntoIBB.Location = new System.Drawing.Point(125, 499);
+            this.buttonFillBleachIntoIBB.Location = new System.Drawing.Point(137, 376);
             this.buttonFillBleachIntoIBB.Name = "buttonFillBleachIntoIBB";
             this.buttonFillBleachIntoIBB.Size = new System.Drawing.Size(34, 28);
             this.buttonFillBleachIntoIBB.TabIndex = 34;
@@ -901,7 +697,7 @@
             // 
             // buttonWaterIntoIBB
             // 
-            this.buttonWaterIntoIBB.Location = new System.Drawing.Point(125, 445);
+            this.buttonWaterIntoIBB.Location = new System.Drawing.Point(137, 405);
             this.buttonWaterIntoIBB.Name = "buttonWaterIntoIBB";
             this.buttonWaterIntoIBB.Size = new System.Drawing.Size(34, 28);
             this.buttonWaterIntoIBB.TabIndex = 32;
@@ -911,7 +707,7 @@
             // 
             // buttonFillMediaIntoIBB
             // 
-            this.buttonFillMediaIntoIBB.Location = new System.Drawing.Point(125, 418);
+            this.buttonFillMediaIntoIBB.Location = new System.Drawing.Point(137, 347);
             this.buttonFillMediaIntoIBB.Name = "buttonFillMediaIntoIBB";
             this.buttonFillMediaIntoIBB.Size = new System.Drawing.Size(34, 28);
             this.buttonFillMediaIntoIBB.TabIndex = 31;
@@ -921,7 +717,7 @@
             // 
             // textBoxFillBleachIntoIBATime
             // 
-            this.textBoxFillBleachIntoIBATime.Location = new System.Drawing.Point(177, 504);
+            this.textBoxFillBleachIntoIBATime.Location = new System.Drawing.Point(177, 381);
             this.textBoxFillBleachIntoIBATime.Name = "textBoxFillBleachIntoIBATime";
             this.textBoxFillBleachIntoIBATime.Size = new System.Drawing.Size(77, 20);
             this.textBoxFillBleachIntoIBATime.TabIndex = 30;
@@ -930,17 +726,17 @@
             // 
             // buttonFillBleachIntoIBATime
             // 
-            this.buttonFillBleachIntoIBATime.Location = new System.Drawing.Point(6, 499);
+            this.buttonFillBleachIntoIBATime.Location = new System.Drawing.Point(6, 376);
             this.buttonFillBleachIntoIBATime.Name = "buttonFillBleachIntoIBATime";
-            this.buttonFillBleachIntoIBATime.Size = new System.Drawing.Size(117, 28);
+            this.buttonFillBleachIntoIBATime.Size = new System.Drawing.Size(128, 28);
             this.buttonFillBleachIntoIBATime.TabIndex = 29;
-            this.buttonFillBleachIntoIBATime.Text = "Fill Bleach into IBA";
+            this.buttonFillBleachIntoIBATime.Text = "10x bleach to IBA";
             this.buttonFillBleachIntoIBATime.UseVisualStyleBackColor = true;
             this.buttonFillBleachIntoIBATime.Click += new System.EventHandler(this.buttonFillBleachIntoIBATime_Click);
             // 
             // textBoxFillWaterIntoIBATime
             // 
-            this.textBoxFillWaterIntoIBATime.Location = new System.Drawing.Point(177, 450);
+            this.textBoxFillWaterIntoIBATime.Location = new System.Drawing.Point(177, 410);
             this.textBoxFillWaterIntoIBATime.Name = "textBoxFillWaterIntoIBATime";
             this.textBoxFillWaterIntoIBATime.Size = new System.Drawing.Size(77, 20);
             this.textBoxFillWaterIntoIBATime.TabIndex = 26;
@@ -949,45 +745,47 @@
             // 
             // buttonFillWaterIntoIBA
             // 
-            this.buttonFillWaterIntoIBA.Location = new System.Drawing.Point(6, 445);
+            this.buttonFillWaterIntoIBA.Location = new System.Drawing.Point(6, 405);
             this.buttonFillWaterIntoIBA.Name = "buttonFillWaterIntoIBA";
-            this.buttonFillWaterIntoIBA.Size = new System.Drawing.Size(117, 28);
+            this.buttonFillWaterIntoIBA.Size = new System.Drawing.Size(128, 28);
             this.buttonFillWaterIntoIBA.TabIndex = 25;
-            this.buttonFillWaterIntoIBA.Text = "Fill Water into IBA";
+            this.buttonFillWaterIntoIBA.Text = "Water to IBA";
             this.buttonFillWaterIntoIBA.UseVisualStyleBackColor = true;
             this.buttonFillWaterIntoIBA.Click += new System.EventHandler(this.buttonFillWaterIntoIBA_Click);
             // 
             // textBoxFillMediaIntoIBATime
             // 
-            this.textBoxFillMediaIntoIBATime.Location = new System.Drawing.Point(177, 423);
+            this.textBoxFillMediaIntoIBATime.Location = new System.Drawing.Point(177, 352);
             this.textBoxFillMediaIntoIBATime.Name = "textBoxFillMediaIntoIBATime";
             this.textBoxFillMediaIntoIBATime.Size = new System.Drawing.Size(77, 20);
             this.textBoxFillMediaIntoIBATime.TabIndex = 24;
             this.textBoxFillMediaIntoIBATime.Text = "60";
             this.textBoxFillMediaIntoIBATime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxFillMediaIntoIBATime.TextChanged += new System.EventHandler(this.textBoxFillMediaIntoIBATime_TextChanged);
             // 
             // buttonFillMediaIntoIBA
             // 
-            this.buttonFillMediaIntoIBA.Location = new System.Drawing.Point(6, 418);
+            this.buttonFillMediaIntoIBA.Location = new System.Drawing.Point(6, 347);
             this.buttonFillMediaIntoIBA.Name = "buttonFillMediaIntoIBA";
-            this.buttonFillMediaIntoIBA.Size = new System.Drawing.Size(117, 28);
+            this.buttonFillMediaIntoIBA.Size = new System.Drawing.Size(128, 28);
             this.buttonFillMediaIntoIBA.TabIndex = 23;
-            this.buttonFillMediaIntoIBA.Text = "Fill Media into IBA";
+            this.buttonFillMediaIntoIBA.Text = "10x medium to IBA";
             this.buttonFillMediaIntoIBA.UseVisualStyleBackColor = true;
             this.buttonFillMediaIntoIBA.Click += new System.EventHandler(this.buttonFillMediaIntoIBA_Click);
             // 
             // textBoxKeepLevelTubeBTime
             // 
-            this.textBoxKeepLevelTubeBTime.Location = new System.Drawing.Point(177, 234);
+            this.textBoxKeepLevelTubeBTime.Location = new System.Drawing.Point(177, 250);
             this.textBoxKeepLevelTubeBTime.Name = "textBoxKeepLevelTubeBTime";
             this.textBoxKeepLevelTubeBTime.Size = new System.Drawing.Size(77, 20);
             this.textBoxKeepLevelTubeBTime.TabIndex = 22;
-            this.textBoxKeepLevelTubeBTime.Text = "5";
+            this.textBoxKeepLevelTubeBTime.Text = "15";
             this.textBoxKeepLevelTubeBTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxKeepLevelTubeBTime.TextChanged += new System.EventHandler(this.textBoxKeepLevelTubeBTime_TextChanged);
             // 
             // buttonKeepLevelTubeB
             // 
-            this.buttonKeepLevelTubeB.Location = new System.Drawing.Point(6, 229);
+            this.buttonKeepLevelTubeB.Location = new System.Drawing.Point(6, 245);
             this.buttonKeepLevelTubeB.Name = "buttonKeepLevelTubeB";
             this.buttonKeepLevelTubeB.Size = new System.Drawing.Size(153, 28);
             this.buttonKeepLevelTubeB.TabIndex = 21;
@@ -997,16 +795,16 @@
             // 
             // textBoxKeepLevelTubeATime
             // 
-            this.textBoxKeepLevelTubeATime.Location = new System.Drawing.Point(177, 207);
+            this.textBoxKeepLevelTubeATime.Location = new System.Drawing.Point(177, 223);
             this.textBoxKeepLevelTubeATime.Name = "textBoxKeepLevelTubeATime";
             this.textBoxKeepLevelTubeATime.Size = new System.Drawing.Size(77, 20);
             this.textBoxKeepLevelTubeATime.TabIndex = 19;
-            this.textBoxKeepLevelTubeATime.Text = "5";
+            this.textBoxKeepLevelTubeATime.Text = "15";
             this.textBoxKeepLevelTubeATime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // buttonKeepLevelTubeA
             // 
-            this.buttonKeepLevelTubeA.Location = new System.Drawing.Point(6, 202);
+            this.buttonKeepLevelTubeA.Location = new System.Drawing.Point(6, 218);
             this.buttonKeepLevelTubeA.Name = "buttonKeepLevelTubeA";
             this.buttonKeepLevelTubeA.Size = new System.Drawing.Size(153, 28);
             this.buttonKeepLevelTubeA.TabIndex = 18;
@@ -1014,27 +812,18 @@
             this.buttonKeepLevelTubeA.UseVisualStyleBackColor = true;
             this.buttonKeepLevelTubeA.Click += new System.EventHandler(this.buttonKeepLevelTubeA_Click);
             // 
-            // textBoxEvacuateTubeBCultureID
-            // 
-            this.textBoxEvacuateTubeBCultureID.Location = new System.Drawing.Point(260, 180);
-            this.textBoxEvacuateTubeBCultureID.Name = "textBoxEvacuateTubeBCultureID";
-            this.textBoxEvacuateTubeBCultureID.Size = new System.Drawing.Size(37, 20);
-            this.textBoxEvacuateTubeBCultureID.TabIndex = 17;
-            this.textBoxEvacuateTubeBCultureID.Text = "1:8";
-            this.textBoxEvacuateTubeBCultureID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // textBoxEvacuateTubeBTime
             // 
-            this.textBoxEvacuateTubeBTime.Location = new System.Drawing.Point(177, 180);
+            this.textBoxEvacuateTubeBTime.Location = new System.Drawing.Point(177, 196);
             this.textBoxEvacuateTubeBTime.Name = "textBoxEvacuateTubeBTime";
             this.textBoxEvacuateTubeBTime.Size = new System.Drawing.Size(77, 20);
             this.textBoxEvacuateTubeBTime.TabIndex = 16;
-            this.textBoxEvacuateTubeBTime.Text = "5";
+            this.textBoxEvacuateTubeBTime.Text = "20";
             this.textBoxEvacuateTubeBTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // buttonEvacuateTubeB
             // 
-            this.buttonEvacuateTubeB.Location = new System.Drawing.Point(6, 175);
+            this.buttonEvacuateTubeB.Location = new System.Drawing.Point(6, 191);
             this.buttonEvacuateTubeB.Name = "buttonEvacuateTubeB";
             this.buttonEvacuateTubeB.Size = new System.Drawing.Size(153, 28);
             this.buttonEvacuateTubeB.TabIndex = 15;
@@ -1042,27 +831,19 @@
             this.buttonEvacuateTubeB.UseVisualStyleBackColor = true;
             this.buttonEvacuateTubeB.Click += new System.EventHandler(this.buttonEvacuateTubeB_Click);
             // 
-            // textBoxEvacuateTubeACultureID
-            // 
-            this.textBoxEvacuateTubeACultureID.Location = new System.Drawing.Point(260, 153);
-            this.textBoxEvacuateTubeACultureID.Name = "textBoxEvacuateTubeACultureID";
-            this.textBoxEvacuateTubeACultureID.Size = new System.Drawing.Size(37, 20);
-            this.textBoxEvacuateTubeACultureID.TabIndex = 14;
-            this.textBoxEvacuateTubeACultureID.Text = "1:8";
-            this.textBoxEvacuateTubeACultureID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // textBoxEvacuateTubeATime
             // 
-            this.textBoxEvacuateTubeATime.Location = new System.Drawing.Point(177, 153);
+            this.textBoxEvacuateTubeATime.Location = new System.Drawing.Point(177, 169);
             this.textBoxEvacuateTubeATime.Name = "textBoxEvacuateTubeATime";
             this.textBoxEvacuateTubeATime.Size = new System.Drawing.Size(77, 20);
             this.textBoxEvacuateTubeATime.TabIndex = 13;
-            this.textBoxEvacuateTubeATime.Text = "5";
+            this.textBoxEvacuateTubeATime.Text = "20";
             this.textBoxEvacuateTubeATime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxEvacuateTubeATime.TextChanged += new System.EventHandler(this.textBoxEvacuateTubeATime_TextChanged);
             // 
             // buttonEvacuateTubeA
             // 
-            this.buttonEvacuateTubeA.Location = new System.Drawing.Point(6, 148);
+            this.buttonEvacuateTubeA.Location = new System.Drawing.Point(6, 164);
             this.buttonEvacuateTubeA.Name = "buttonEvacuateTubeA";
             this.buttonEvacuateTubeA.Size = new System.Drawing.Size(153, 28);
             this.buttonEvacuateTubeA.TabIndex = 12;
@@ -1141,7 +922,7 @@
             this.textBoxTransferBtoATime.Name = "textBoxTransferBtoATime";
             this.textBoxTransferBtoATime.Size = new System.Drawing.Size(77, 20);
             this.textBoxTransferBtoATime.TabIndex = 4;
-            this.textBoxTransferBtoATime.Text = "20";
+            this.textBoxTransferBtoATime.Text = "6";
             this.textBoxTransferBtoATime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxTransferBtoATime.TextChanged += new System.EventHandler(this.textBoxTransferBtoATime_TextChanged);
             // 
@@ -1161,7 +942,7 @@
             this.textBoxTransferAtoBTime.Name = "textBoxTransferAtoBTime";
             this.textBoxTransferAtoBTime.Size = new System.Drawing.Size(77, 20);
             this.textBoxTransferAtoBTime.TabIndex = 2;
-            this.textBoxTransferAtoBTime.Text = "20";
+            this.textBoxTransferAtoBTime.Text = "6";
             this.textBoxTransferAtoBTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label9
@@ -1169,9 +950,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(185, 16);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
+            this.label9.Size = new System.Drawing.Size(61, 13);
             this.label9.TabIndex = 1;
-            this.label9.Text = "time (secs)";
+            this.label9.Text = "Volume (ml)";
             // 
             // buttonTransferAtoB
             // 
@@ -1185,6 +966,7 @@
             // 
             // textBoxLogMain
             // 
+            this.textBoxLogMain.AcceptsReturn = true;
             this.textBoxLogMain.BackColor = System.Drawing.Color.White;
             this.textBoxLogMain.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLogMain.Location = new System.Drawing.Point(612, 11);
@@ -1193,12 +975,15 @@
             this.textBoxLogMain.Name = "textBoxLogMain";
             this.textBoxLogMain.ReadOnly = true;
             this.textBoxLogMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLogMain.Size = new System.Drawing.Size(477, 654);
+            this.textBoxLogMain.Size = new System.Drawing.Size(477, 609);
             this.textBoxLogMain.TabIndex = 22;
-            this.textBoxLogMain.Text = "Welcome to the LEVOT Control Panel!\r\n";
+            this.textBoxLogMain.Text = "Welcome to the LTET Control Panel!\r\n";
+            this.textBoxLogMain.TextChanged += new System.EventHandler(this.textBoxLogMain_TextChanged);
             // 
             // groupBoxScaleCalibration
             // 
+            this.groupBoxScaleCalibration.Controls.Add(this.buttonScalesValues);
+            this.groupBoxScaleCalibration.Controls.Add(this.buttonResetScales);
             this.groupBoxScaleCalibration.Controls.Add(this.checkBoxCalibrateScaleB);
             this.groupBoxScaleCalibration.Controls.Add(this.checkBoxCalibrateScaleA);
             this.groupBoxScaleCalibration.Controls.Add(this.textBoxScaleCalHigh);
@@ -1207,7 +992,7 @@
             this.groupBoxScaleCalibration.Controls.Add(this.buttonScaleCalSetLow);
             this.groupBoxScaleCalibration.Location = new System.Drawing.Point(380, 375);
             this.groupBoxScaleCalibration.Name = "groupBoxScaleCalibration";
-            this.groupBoxScaleCalibration.Size = new System.Drawing.Size(117, 135);
+            this.groupBoxScaleCalibration.Size = new System.Drawing.Size(117, 158);
             this.groupBoxScaleCalibration.TabIndex = 23;
             this.groupBoxScaleCalibration.TabStop = false;
             this.groupBoxScaleCalibration.Text = "Scale Calibration";
@@ -1237,7 +1022,7 @@
             // textBoxScaleCalHigh
             // 
             this.textBoxScaleCalHigh.Enabled = false;
-            this.textBoxScaleCalHigh.Location = new System.Drawing.Point(7, 94);
+            this.textBoxScaleCalHigh.Location = new System.Drawing.Point(6, 94);
             this.textBoxScaleCalHigh.Name = "textBoxScaleCalHigh";
             this.textBoxScaleCalHigh.Size = new System.Drawing.Size(44, 20);
             this.textBoxScaleCalHigh.TabIndex = 3;
@@ -1270,7 +1055,7 @@
             this.buttonScaleCalSetLow.Enabled = false;
             this.buttonScaleCalSetLow.Location = new System.Drawing.Point(56, 67);
             this.buttonScaleCalSetLow.Name = "buttonScaleCalSetLow";
-            this.buttonScaleCalSetLow.Size = new System.Drawing.Size(55, 23);
+            this.buttonScaleCalSetLow.Size = new System.Drawing.Size(56, 23);
             this.buttonScaleCalSetLow.TabIndex = 0;
             this.buttonScaleCalSetLow.Text = "Set Low";
             this.buttonScaleCalSetLow.UseVisualStyleBackColor = true;
@@ -1285,10 +1070,30 @@
             this.groupBoxLaserCalibration.Controls.Add(this.comboBoxSelectLaserCalibration);
             this.groupBoxLaserCalibration.Location = new System.Drawing.Point(380, 268);
             this.groupBoxLaserCalibration.Name = "groupBoxLaserCalibration";
-            this.groupBoxLaserCalibration.Size = new System.Drawing.Size(222, 105);
+            this.groupBoxLaserCalibration.Size = new System.Drawing.Size(222, 92);
             this.groupBoxLaserCalibration.TabIndex = 24;
             this.groupBoxLaserCalibration.TabStop = false;
-            this.groupBoxLaserCalibration.Text = "Laser Calibration";
+            this.groupBoxLaserCalibration.Text = "OD Calibration";
+            // 
+            // buttonReadBlankB
+            // 
+            this.buttonReadBlankB.Location = new System.Drawing.Point(160, 55);
+            this.buttonReadBlankB.Name = "buttonReadBlankB";
+            this.buttonReadBlankB.Size = new System.Drawing.Size(52, 23);
+            this.buttonReadBlankB.TabIndex = 28;
+            this.buttonReadBlankB.Text = "Blank B";
+            this.buttonReadBlankB.UseVisualStyleBackColor = true;
+            this.buttonReadBlankB.Click += new System.EventHandler(this.buttonReadBlankB_Click);
+            // 
+            // buttonReadBlankA
+            // 
+            this.buttonReadBlankA.Location = new System.Drawing.Point(102, 55);
+            this.buttonReadBlankA.Name = "buttonReadBlankA";
+            this.buttonReadBlankA.Size = new System.Drawing.Size(52, 23);
+            this.buttonReadBlankA.TabIndex = 27;
+            this.buttonReadBlankA.Text = "Blank A";
+            this.buttonReadBlankA.UseVisualStyleBackColor = true;
+            this.buttonReadBlankA.Click += new System.EventHandler(this.buttonReadBlankA_Click);
             // 
             // buttonReadBlank
             // 
@@ -1323,16 +1128,62 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.comboBoxBleachWashingProtocolModeB);
+            this.groupBox2.Controls.Add(this.comboBoxBleachWashingProtocolModeA);
+            this.groupBox2.Controls.Add(this.buttonBleachWashingProtocolB);
+            this.groupBox2.Controls.Add(this.buttonBleachWashingProtocolA);
             this.groupBox2.Controls.Add(this.comboBoxMainWashingProtocolModeB);
             this.groupBox2.Controls.Add(this.comboBoxMainWashingProtocolModeA);
             this.groupBox2.Controls.Add(this.buttonMainWashingProtocolB);
             this.groupBox2.Controls.Add(this.buttonMainWashingProtocolA);
             this.groupBox2.Location = new System.Drawing.Point(499, 372);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(107, 138);
+            this.groupBox2.Size = new System.Drawing.Size(107, 248);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Protocols";
+            // 
+            // comboBoxBleachWashingProtocolModeB
+            // 
+            this.comboBoxBleachWashingProtocolModeB.DisplayMember = "2";
+            this.comboBoxBleachWashingProtocolModeB.Items.AddRange(new object[] {
+            "Normal",
+            "Full"});
+            this.comboBoxBleachWashingProtocolModeB.Location = new System.Drawing.Point(7, 220);
+            this.comboBoxBleachWashingProtocolModeB.Name = "comboBoxBleachWashingProtocolModeB";
+            this.comboBoxBleachWashingProtocolModeB.Size = new System.Drawing.Size(96, 21);
+            this.comboBoxBleachWashingProtocolModeB.TabIndex = 11;
+            // 
+            // comboBoxBleachWashingProtocolModeA
+            // 
+            this.comboBoxBleachWashingProtocolModeA.DisplayMember = "2";
+            this.comboBoxBleachWashingProtocolModeA.Items.AddRange(new object[] {
+            "Normal",
+            "Full"});
+            this.comboBoxBleachWashingProtocolModeA.Location = new System.Drawing.Point(7, 166);
+            this.comboBoxBleachWashingProtocolModeA.Name = "comboBoxBleachWashingProtocolModeA";
+            this.comboBoxBleachWashingProtocolModeA.Size = new System.Drawing.Size(96, 21);
+            this.comboBoxBleachWashingProtocolModeA.TabIndex = 10;
+            // 
+            // buttonBleachWashingProtocolB
+            // 
+            this.buttonBleachWashingProtocolB.Location = new System.Drawing.Point(7, 189);
+            this.buttonBleachWashingProtocolB.Name = "buttonBleachWashingProtocolB";
+            this.buttonBleachWashingProtocolB.Size = new System.Drawing.Size(96, 29);
+            this.buttonBleachWashingProtocolB.TabIndex = 9;
+            this.buttonBleachWashingProtocolB.Text = "Bleaching B";
+            this.buttonBleachWashingProtocolB.UseVisualStyleBackColor = true;
+            this.buttonBleachWashingProtocolB.Click += new System.EventHandler(this.buttonBleachWashingProtocolB_Click_1);
+            // 
+            // buttonBleachWashingProtocolA
+            // 
+            this.buttonBleachWashingProtocolA.Location = new System.Drawing.Point(7, 133);
+            this.buttonBleachWashingProtocolA.Name = "buttonBleachWashingProtocolA";
+            this.buttonBleachWashingProtocolA.Size = new System.Drawing.Size(96, 31);
+            this.buttonBleachWashingProtocolA.TabIndex = 8;
+            this.buttonBleachWashingProtocolA.Text = "Bleaching A";
+            this.buttonBleachWashingProtocolA.UseVisualStyleBackColor = true;
+            this.buttonBleachWashingProtocolA.Click += new System.EventHandler(this.buttonBleachWashingProtocolA_Click_1);
             // 
             // comboBoxMainWashingProtocolModeB
             // 
@@ -1340,10 +1191,11 @@
             this.comboBoxMainWashingProtocolModeB.Items.AddRange(new object[] {
             "Normal",
             "Full"});
-            this.comboBoxMainWashingProtocolModeB.Location = new System.Drawing.Point(7, 113);
+            this.comboBoxMainWashingProtocolModeB.Location = new System.Drawing.Point(7, 110);
             this.comboBoxMainWashingProtocolModeB.Name = "comboBoxMainWashingProtocolModeB";
             this.comboBoxMainWashingProtocolModeB.Size = new System.Drawing.Size(96, 21);
             this.comboBoxMainWashingProtocolModeB.TabIndex = 7;
+            this.comboBoxMainWashingProtocolModeB.SelectedIndexChanged += new System.EventHandler(this.comboBoxMainWashingProtocolModeB_SelectedIndexChanged);
             // 
             // comboBoxMainWashingProtocolModeA
             // 
@@ -1351,18 +1203,18 @@
             this.comboBoxMainWashingProtocolModeA.Items.AddRange(new object[] {
             "Normal",
             "Full"});
-            this.comboBoxMainWashingProtocolModeA.Location = new System.Drawing.Point(7, 55);
+            this.comboBoxMainWashingProtocolModeA.Location = new System.Drawing.Point(7, 51);
             this.comboBoxMainWashingProtocolModeA.Name = "comboBoxMainWashingProtocolModeA";
-            this.comboBoxMainWashingProtocolModeA.Size = new System.Drawing.Size(96, 21);
+            this.comboBoxMainWashingProtocolModeA.Size = new System.Drawing.Size(94, 21);
             this.comboBoxMainWashingProtocolModeA.TabIndex = 6;
             // 
             // buttonMainWashingProtocolB
             // 
-            this.buttonMainWashingProtocolB.Location = new System.Drawing.Point(7, 79);
+            this.buttonMainWashingProtocolB.Location = new System.Drawing.Point(6, 74);
             this.buttonMainWashingProtocolB.Name = "buttonMainWashingProtocolB";
             this.buttonMainWashingProtocolB.Size = new System.Drawing.Size(96, 34);
             this.buttonMainWashingProtocolB.TabIndex = 5;
-            this.buttonMainWashingProtocolB.Text = "Main Washing Protocol B";
+            this.buttonMainWashingProtocolB.Text = "Main Washing B";
             this.buttonMainWashingProtocolB.UseVisualStyleBackColor = true;
             this.buttonMainWashingProtocolB.Click += new System.EventHandler(this.buttonMainWashingProtocolB_Click);
             // 
@@ -1370,29 +1222,29 @@
             // 
             this.buttonMainWashingProtocolA.Location = new System.Drawing.Point(7, 18);
             this.buttonMainWashingProtocolA.Name = "buttonMainWashingProtocolA";
-            this.buttonMainWashingProtocolA.Size = new System.Drawing.Size(96, 35);
+            this.buttonMainWashingProtocolA.Size = new System.Drawing.Size(96, 31);
             this.buttonMainWashingProtocolA.TabIndex = 0;
-            this.buttonMainWashingProtocolA.Text = "Main Washing Protocol A";
+            this.buttonMainWashingProtocolA.Text = "Main Washing A";
             this.buttonMainWashingProtocolA.UseVisualStyleBackColor = true;
             this.buttonMainWashingProtocolA.Click += new System.EventHandler(this.buttonMainWashingProtocolA_Click);
             // 
             // buttonStopTurbidostatCycler
             // 
-            this.buttonStopTurbidostatCycler.Location = new System.Drawing.Point(173, 128);
+            this.buttonStopTurbidostatCycler.Location = new System.Drawing.Point(115, 19);
             this.buttonStopTurbidostatCycler.Name = "buttonStopTurbidostatCycler";
-            this.buttonStopTurbidostatCycler.Size = new System.Drawing.Size(47, 23);
+            this.buttonStopTurbidostatCycler.Size = new System.Drawing.Size(103, 30);
             this.buttonStopTurbidostatCycler.TabIndex = 2;
-            this.buttonStopTurbidostatCycler.Text = "Stop";
+            this.buttonStopTurbidostatCycler.Text = "Pause Experiment";
             this.buttonStopTurbidostatCycler.UseVisualStyleBackColor = true;
             this.buttonStopTurbidostatCycler.Click += new System.EventHandler(this.buttonStopTurbidostatCycler_Click);
             // 
             // buttonStartTurbidostatCycler
             // 
-            this.buttonStartTurbidostatCycler.Location = new System.Drawing.Point(7, 128);
+            this.buttonStartTurbidostatCycler.Location = new System.Drawing.Point(6, 19);
             this.buttonStartTurbidostatCycler.Name = "buttonStartTurbidostatCycler";
-            this.buttonStartTurbidostatCycler.Size = new System.Drawing.Size(160, 23);
+            this.buttonStartTurbidostatCycler.Size = new System.Drawing.Size(103, 30);
             this.buttonStartTurbidostatCycler.TabIndex = 1;
-            this.buttonStartTurbidostatCycler.Text = "Start Turbidostat Cycler";
+            this.buttonStartTurbidostatCycler.Text = "Start Experiment";
             this.buttonStartTurbidostatCycler.UseVisualStyleBackColor = true;
             this.buttonStartTurbidostatCycler.Click += new System.EventHandler(this.buttonStartTurbidostatCycler_Click);
             // 
@@ -1405,7 +1257,7 @@
             this.groupBox3.Controls.Add(this.labelSystemTime);
             this.groupBox3.Location = new System.Drawing.Point(525, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(87, 66);
+            this.groupBox3.Size = new System.Drawing.Size(87, 88);
             this.groupBox3.TabIndex = 26;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "System Time";
@@ -1420,55 +1272,22 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.buttonFillTubeAsByScale);
-            this.groupBox4.Controls.Add(this.buttonWasteIBB);
-            this.groupBox4.Controls.Add(this.buttonWasteIBA);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.radioButtonStartingCultureB);
             this.groupBox4.Controls.Add(this.radioButtonStartingCultureA);
             this.groupBox4.Controls.Add(this.buttonStartTurbidostatCycler);
             this.groupBox4.Controls.Add(this.buttonStopTurbidostatCycler);
-            this.groupBox4.Location = new System.Drawing.Point(380, 508);
+            this.groupBox4.Location = new System.Drawing.Point(12, 539);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(226, 157);
+            this.groupBox4.Size = new System.Drawing.Size(478, 64);
             this.groupBox4.TabIndex = 27;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Run Experiment";
             // 
-            // buttonFillTubeAsByScale
-            // 
-            this.buttonFillTubeAsByScale.Location = new System.Drawing.Point(11, 84);
-            this.buttonFillTubeAsByScale.Name = "buttonFillTubeAsByScale";
-            this.buttonFillTubeAsByScale.Size = new System.Drawing.Size(124, 23);
-            this.buttonFillTubeAsByScale.TabIndex = 8;
-            this.buttonFillTubeAsByScale.Text = "Fill Tube As By Scale";
-            this.buttonFillTubeAsByScale.UseVisualStyleBackColor = true;
-            this.buttonFillTubeAsByScale.Click += new System.EventHandler(this.buttonFillTubeAsByScale_Click);
-            // 
-            // buttonWasteIBB
-            // 
-            this.buttonWasteIBB.Location = new System.Drawing.Point(88, 56);
-            this.buttonWasteIBB.Name = "buttonWasteIBB";
-            this.buttonWasteIBB.Size = new System.Drawing.Size(71, 23);
-            this.buttonWasteIBB.TabIndex = 7;
-            this.buttonWasteIBB.Text = "Waste IBB";
-            this.buttonWasteIBB.UseVisualStyleBackColor = true;
-            this.buttonWasteIBB.Click += new System.EventHandler(this.buttonWasteIBB_Click);
-            // 
-            // buttonWasteIBA
-            // 
-            this.buttonWasteIBA.Location = new System.Drawing.Point(11, 56);
-            this.buttonWasteIBA.Name = "buttonWasteIBA";
-            this.buttonWasteIBA.Size = new System.Drawing.Size(71, 23);
-            this.buttonWasteIBA.TabIndex = 6;
-            this.buttonWasteIBA.Text = "Waste IBA";
-            this.buttonWasteIBA.UseVisualStyleBackColor = true;
-            this.buttonWasteIBA.Click += new System.EventHandler(this.buttonWasteIBA_Click);
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(72, 23);
+            this.label12.Location = new System.Drawing.Point(250, 28);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(63, 13);
             this.label12.TabIndex = 5;
@@ -1477,7 +1296,7 @@
             // radioButtonStartingCultureB
             // 
             this.radioButtonStartingCultureB.AutoSize = true;
-            this.radioButtonStartingCultureB.Location = new System.Drawing.Point(182, 21);
+            this.radioButtonStartingCultureB.Location = new System.Drawing.Point(360, 26);
             this.radioButtonStartingCultureB.Name = "radioButtonStartingCultureB";
             this.radioButtonStartingCultureB.Size = new System.Drawing.Size(32, 17);
             this.radioButtonStartingCultureB.TabIndex = 4;
@@ -1489,7 +1308,7 @@
             // 
             this.radioButtonStartingCultureA.AutoSize = true;
             this.radioButtonStartingCultureA.Checked = true;
-            this.radioButtonStartingCultureA.Location = new System.Drawing.Point(141, 21);
+            this.radioButtonStartingCultureA.Location = new System.Drawing.Point(319, 26);
             this.radioButtonStartingCultureA.Name = "radioButtonStartingCultureA";
             this.radioButtonStartingCultureA.Size = new System.Drawing.Size(32, 17);
             this.radioButtonStartingCultureA.TabIndex = 3;
@@ -1498,31 +1317,21 @@
             this.radioButtonStartingCultureA.UseVisualStyleBackColor = true;
             this.radioButtonStartingCultureA.CheckedChanged += new System.EventHandler(this.radioButtonStartingCultureA_CheckedChanged);
             // 
-            // buttonReadBlankA
+            // label18
             // 
-            this.buttonReadBlankA.Location = new System.Drawing.Point(102, 55);
-            this.buttonReadBlankA.Name = "buttonReadBlankA";
-            this.buttonReadBlankA.Size = new System.Drawing.Size(52, 23);
-            this.buttonReadBlankA.TabIndex = 27;
-            this.buttonReadBlankA.Text = "Blank A";
-            this.buttonReadBlankA.UseVisualStyleBackColor = true;
-            this.buttonReadBlankA.Click += new System.EventHandler(this.buttonReadBlankA_Click);
-            // 
-            // buttonReadBlankB
-            // 
-            this.buttonReadBlankB.Location = new System.Drawing.Point(160, 55);
-            this.buttonReadBlankB.Name = "buttonReadBlankB";
-            this.buttonReadBlankB.Size = new System.Drawing.Size(52, 23);
-            this.buttonReadBlankB.TabIndex = 28;
-            this.buttonReadBlankB.Text = "Blank B";
-            this.buttonReadBlankB.UseVisualStyleBackColor = true;
-            this.buttonReadBlankB.Click += new System.EventHandler(this.buttonReadBlankB_Click);
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(391, 206);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(39, 13);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "Valves";
             // 
             // TurbidostatControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1091, 678);
+            this.ClientSize = new System.Drawing.Size(1091, 628);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -1593,10 +1402,8 @@
         private System.Windows.Forms.TextBox textBoxFillTubeACultureID;
         private System.Windows.Forms.TextBox textBoxFillTubeATime;
         private System.Windows.Forms.Button buttonFillTubeA;
-        private System.Windows.Forms.TextBox textBoxEvacuateTubeACultureID;
         private System.Windows.Forms.TextBox textBoxEvacuateTubeATime;
         private System.Windows.Forms.Button buttonEvacuateTubeA;
-        private System.Windows.Forms.TextBox textBoxEvacuateTubeBCultureID;
         private System.Windows.Forms.TextBox textBoxEvacuateTubeBTime;
         private System.Windows.Forms.Button buttonEvacuateTubeB;
         private System.Windows.Forms.TextBox textBoxLogMain;
@@ -1614,7 +1421,6 @@
         private System.Windows.Forms.TextBox textBoxFillMediaIntoIBATime;
         private System.Windows.Forms.Button buttonFillMediaIntoIBA;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxFillMediaIntoIBAPushBackTime;
         private System.Windows.Forms.GroupBox groupBoxScaleCalibration;
         private System.Windows.Forms.CheckBox checkBoxCalibrateScaleA;
         private System.Windows.Forms.TextBox textBoxScaleCalHigh;
@@ -1625,53 +1431,22 @@
         private System.Windows.Forms.GroupBox groupBoxLaserCalibration;
         private System.Windows.Forms.Button buttonMakeNewCalibration;
         public System.Windows.Forms.ComboBox comboBoxSelectLaserCalibration;
-        private System.Windows.Forms.TextBox textBoxWashTubeACultureID;
-        private System.Windows.Forms.TextBox textBoxWashTubeATime;
-        private System.Windows.Forms.Button buttonWashTubeA;
-        private System.Windows.Forms.TextBox textBoxWashTubeBCultureID;
-        private System.Windows.Forms.TextBox textBoxWashTubeBTime;
-        private System.Windows.Forms.Button buttonWashTubeB;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonMakeLBInIBB;
         private System.Windows.Forms.TextBox textBoxMakeLBInIBAGrams;
         private System.Windows.Forms.Button buttonMakeLBInIBA;
-        private System.Windows.Forms.TextBox textBoxWashTubeBCycle;
-        private System.Windows.Forms.TextBox textBoxWashTubeACycle;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonMainWashingProtocolA;
         private System.Windows.Forms.Button buttonStartTurbidostatCycler;
         private System.Windows.Forms.Button buttonStopTurbidostatCycler;
         private System.Windows.Forms.Button buttonMainWashingProtocolB;
-        private System.Windows.Forms.TextBox textBoxDiluteTubeBCultureID;
-        private System.Windows.Forms.TextBox textBoxDiluteTubeBTime;
-        private System.Windows.Forms.Button buttonDiluteTubeB;
-        private System.Windows.Forms.TextBox textBoxDiluteTubeACultureID;
-        private System.Windows.Forms.TextBox textBoxDiluteTubeATime;
-        private System.Windows.Forms.Button buttonDiluteTubeA;
         private System.Windows.Forms.Button buttonMakeBleachIBB;
         private System.Windows.Forms.TextBox textBoxMakeBleachIBAGrams;
         private System.Windows.Forms.Button buttonMakeBleachIBA;
         private System.Windows.Forms.Button buttonReadBlank;
-        private System.Windows.Forms.TextBox textBoxAddIPTGIntoIBAPushBackTime;
-        private System.Windows.Forms.TextBox textBoxAddIPTGIntoIBAGrams;
-        private System.Windows.Forms.Button buttonAddIPTGIntoIBB;
-        private System.Windows.Forms.Button buttonAddIPTGIntoIBA;
-        private System.Windows.Forms.TextBox textBoxAddDrug2IntoIBAPushBackTime;
-        private System.Windows.Forms.TextBox textBoxAddDrug2IntoIBAGrams;
-        private System.Windows.Forms.Button buttonAddDrug2IntoIBB;
-        private System.Windows.Forms.Button buttonAddDrug2IntoIBA;
-        private System.Windows.Forms.TextBox textBoxAddDrug1IntoIBBPushBackTime;
-        private System.Windows.Forms.TextBox textBoxAddDrug1IntoIBAGrams;
-        private System.Windows.Forms.Button buttonAddDrug1IntoIBB;
-        private System.Windows.Forms.Button buttonAddDrug1IntoIBA;
         private System.Windows.Forms.Timer timerSystem;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label labelSystemTime;
-        private System.Windows.Forms.Button buttonSetODB;
-        private System.Windows.Forms.TextBox textBoxSetODCultureID;
-        private System.Windows.Forms.TextBox textBoxSetOD;
-        private System.Windows.Forms.Button buttonSetODA;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RadioButton radioButtonStartingCultureB;
@@ -1686,12 +1461,28 @@
         private System.Windows.Forms.TextBox textBoxTransferBtoACultureIDs;
         private System.Windows.Forms.TextBox textBoxTransferAtoBCultureIDs;
         private System.Windows.Forms.ComboBox comboBoxMainWashingProtocolModeB;
-        private System.Windows.Forms.Button buttonFillTubeAsByScale;
         private System.Windows.Forms.Button buttonFillTubeBFast;
         private System.Windows.Forms.Button buttonFillTubeAFast;
         private System.Windows.Forms.CheckBox checkBoxODReader;
         private System.Windows.Forms.Button buttonReadBlankB;
         private System.Windows.Forms.Button buttonReadBlankA;
+        private System.Windows.Forms.ComboBox comboBoxBleachWashingProtocolModeB;
+        private System.Windows.Forms.ComboBox comboBoxBleachWashingProtocolModeA;
+        private System.Windows.Forms.Button buttonBleachWashingProtocolB;
+        private System.Windows.Forms.Button buttonBleachWashingProtocolA;
+        private System.Windows.Forms.TextBox textBoxKeepLevelBCultureID;
+        private System.Windows.Forms.TextBox textBoxKeepLevelACultureID;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBoxPressurizeMediaReservoirDuration;
+        private System.Windows.Forms.Button buttonPressurizeMediaReservoir;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBoxWasteIntoSinkDuration;
+        private System.Windows.Forms.Button buttonStartWasteIntoSink;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button buttonScalesValues;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button buttonResetScales;
     }
 }
 

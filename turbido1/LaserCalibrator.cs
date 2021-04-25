@@ -172,9 +172,9 @@ namespace turbido1
             
             //charts[index].ChartAreas[name].AxisX.MajorGrid.LineDashStyle = Graph.ChartDashStyle.Dot;
 
-            charts[index].ChartAreas[name].AxisY.Minimum = 0.01;
-            charts[index].ChartAreas[name].AxisY.Maximum = 1;
-            charts[index].ChartAreas[name].AxisY.Interval = 0.2;
+            charts[index].ChartAreas[name].AxisY.Minimum = 0.0;
+            charts[index].ChartAreas[name].AxisY.Maximum = 0.2;
+            charts[index].ChartAreas[name].AxisY.Interval = 0.05;
             charts[index].ChartAreas[name].AxisY.MajorGrid.Enabled = false;
             //charts[index].ChartAreas[name].AxisX.IsLogarithmic = true;
             charts[index].ChartAreas[name].AxisX.LogarithmBase = Math.Exp(1);

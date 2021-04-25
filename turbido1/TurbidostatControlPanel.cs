@@ -105,6 +105,11 @@ namespace turbido1
 
             this.textBoxMediaAirationPeriod.Text = library.MediaAirationCyclePeriod.ToString();
             this.textBoxParameterTransferPeriod.Text = library.TransferCyclePeriod.ToString();
+
+            this.comboBoxBleachWashingProtocolModeA.SelectedIndex = 0;
+            this.comboBoxBleachWashingProtocolModeB.SelectedIndex = 0;
+            this.comboBoxMainWashingProtocolModeA.SelectedIndex = 0;
+            this.comboBoxMainWashingProtocolModeB.SelectedIndex = 0;
         }
 
         private void TurbidostatControlPanel_FormClosed(object sender, FormClosedEventArgs e)
@@ -141,64 +146,6 @@ namespace turbido1
             }
         }
         // end of GUI Methods
-
-        private void buttonWashTubeA_Click(object sender, EventArgs e)
-        {
-            (new Thread(() =>
-            {
-                if (textBoxWashTubeACultureID.Text == "1:8")
-                {
-                    for (int j = 0; j < Int32.Parse(textBoxWashTubeACycle.Text); j++)
-                    {
-                        core.WashTubeAs_worker(Double.Parse(textBoxWashTubeATime.Text), 1);
-                    }
-                }
-                else
-                {
-                    for (int j = 0; j < Int32.Parse(textBoxWashTubeACycle.Text); j++)
-                    {
-                        if (textBoxWashTubeACultureID.Text.Contains(":"))
-                        {
-                            string[] ss = textBoxWashTubeACultureID.Text.Split(':');
-                            for (int i = Int32.Parse(ss[0]); i < (Int32.Parse(ss[1])); i++)
-                                (new Thread(() => { core.WashTubeA_worker(i - 1, Double.Parse(textBoxWashTubeATime.Text)); })).Start();
-                            core.WashTubeA_worker(Int32.Parse(ss[1]) - 1, Double.Parse(textBoxWashTubeATime.Text));
-                        }
-                        else
-                            core.WashTubeA_worker(Int32.Parse(textBoxWashTubeACultureID.Text) - 1, Double.Parse(textBoxWashTubeATime.Text));
-                    }
-                }
-            })).Start();
-        }
-
-        private void buttonWashTubeB_Click(object sender, EventArgs e)
-        {
-           (new Thread(() =>
-           {
-                if (textBoxWashTubeBCultureID.Text == "1:8")
-                {
-                    for (int j = 0; j < Int32.Parse(textBoxWashTubeBCycle.Text); j++)
-                    {
-                        core.WashTubeBs_worker(Double.Parse(textBoxWashTubeBTime.Text), 1);
-                    }
-                }
-                else
-                {
-                    for (int j = 0; j < Int32.Parse(textBoxWashTubeBCycle.Text); j++)
-                    {
-                        if (textBoxWashTubeBCultureID.Text.Contains(":"))
-                        {
-                            string[] ss = textBoxWashTubeBCultureID.Text.Split(':');
-                            for (int i = Int32.Parse(ss[0]); i < (Int32.Parse(ss[1])); i++)
-                                (new Thread(() => { core.WashTubeB_worker(i - 1, Double.Parse(textBoxWashTubeBTime.Text)); })).Start();
-                            core.WashTubeB_worker(Int32.Parse(ss[1]) - 1, Double.Parse(textBoxWashTubeBTime.Text));
-                        }
-                        else
-                            core.WashTubeB(Int32.Parse(textBoxWashTubeBCultureID.Text) - 1, Double.Parse(textBoxWashTubeBTime.Text));
-                    }
-                }
-            })).Start();
-        }
 
         private void buttonMediaIntoIntBottle_Click(object sender, EventArgs e)
         {
@@ -351,12 +298,12 @@ namespace turbido1
 
         private void buttonEvacuateTubeA_Click(object sender, EventArgs e)
         {
-            if (textBoxEvacuateTubeACultureID.Text.Contains(":"))
+            /*if (textBoxEvacuateTubeACultureID.Text.Contains(":"))
             {
                 string[] ss = textBoxEvacuateTubeACultureID.Text.Split(':');
-                if (ss[0] == "1" && ss[1] == "8")
-                    core.AltEvacuateTubeAs(Double.Parse(textBoxEvacuateTubeATime.Text));
-                else
+                if (ss[0] == "1" && ss[1] == "8")*/
+            core.AltEvacuateTubeAs(Double.Parse(textBoxEvacuateTubeATime.Text));
+            /*    else
                 {
                     for (int i = Int32.Parse(ss[0]); i <= (Int32.Parse(ss[1])); i++)
                         core.EvacuateTubeA(i - 1, Double.Parse(textBoxEvacuateTubeATime.Text));
@@ -364,33 +311,67 @@ namespace turbido1
             }
             else
                 core.EvacuateTubeA(Int32.Parse(textBoxEvacuateTubeACultureID.Text) - 1, Double.Parse(textBoxEvacuateTubeATime.Text));
-        }
+        */}
 
         private void buttonEvacuateTubeB_Click(object sender, EventArgs e)
         {
-            if (textBoxEvacuateTubeBCultureID.Text.Contains(":"))
-            {
-                string[] ss = textBoxEvacuateTubeBCultureID.Text.Split(':');
-                if (ss[0] == "1" && ss[1] == "8")
-                    core.AltEvacuateTubeBs(Double.Parse(textBoxEvacuateTubeBTime.Text));
-                else
-                {
-                    for (int i = Int32.Parse(ss[0]); i <= (Int32.Parse(ss[1])); i++)
-                        core.EvacuateTubeB(i - 1, Double.Parse(textBoxEvacuateTubeBTime.Text));
-                }
-            }
-            else
-                core.EvacuateTubeB(Int32.Parse(textBoxEvacuateTubeBCultureID.Text) - 1, Double.Parse(textBoxEvacuateTubeBTime.Text));
+            /*if (textBoxEvacuateTubeBCultureID.Text.Contains(":"))
+            //{
+            //    string[] ss = textBoxEvacuateTubeBCultureID.Text.Split(':');
+            //    if (ss[0] == "1" && ss[1] == "8") */
+            core.AltEvacuateTubeBs(Double.Parse(textBoxEvacuateTubeBTime.Text));
+            //  else
+            //    {
+            //        for (int i = Int32.Parse(ss[0]); i <= (Int32.Parse(ss[1])); i++)
+            //            core.EvacuateTubeB(i - 1, Double.Parse(textBoxEvacuateTubeBTime.Text));
+            //    }
+            //}
+            //else
+            ///    core.EvacuateTubeB(Int32.Parse(textBoxEvacuateTubeBCultureID.Text) - 1, Double.Parse(textBoxEvacuateTubeBTime.Text));
         }
 
         private void buttonKeepLevelTubeA_Click(object sender, EventArgs e)
         {
-            core.AltKeepLevelA(Double.Parse(textBoxKeepLevelTubeATime.Text));
+            if (textBoxKeepLevelACultureID.Text.Contains(":"))
+            {
+                string[] ss = textBoxKeepLevelACultureID.Text.Split(':');
+                if (ss[0] == "1" && ss[1] == "8")
+                    core.AltKeepLevelA(Double.Parse(textBoxKeepLevelTubeATime.Text));
+                else
+                {
+                    List<int> cultures = new List<int>() { };
+                    for (int i = int.Parse(ss[0]) - 1; i < int.Parse(ss[1]); i++)
+                        cultures.Add(i);
+                    core.AltKeepLevelASelect(cultures, Double.Parse(textBoxKeepLevelTubeATime.Text));
+                }
+            }
+            else
+            {
+                List<int> cultures = new List<int> { int.Parse(textBoxKeepLevelACultureID.Text) - 1 };
+                core.AltKeepLevelASelect(cultures, Double.Parse(textBoxKeepLevelTubeATime.Text));
+            }
         }
 
         private void buttonKeepLevelTubeB_Click(object sender, EventArgs e)
         {
-            core.AltKeepLevelB(Double.Parse(textBoxKeepLevelTubeBTime.Text));
+            if (textBoxKeepLevelBCultureID.Text.Contains(":"))
+            {
+                string[] ss = textBoxKeepLevelBCultureID.Text.Split(':');
+                if (ss[0] == "1" && ss[1] == "8")
+                    core.AltKeepLevelB(Double.Parse(textBoxKeepLevelTubeBTime.Text));
+                else
+                {
+                    List<int> cultures = new List<int>() { };
+                    for (int i = int.Parse(ss[0]) - 1; i < int.Parse(ss[1]); i++)
+                        cultures.Add(i);
+                    core.AltKeepLevelBSelect(cultures, Double.Parse(textBoxKeepLevelTubeBTime.Text));
+                }
+            }
+            else
+            {
+                List<int> cultures = new List<int> { int.Parse(textBoxKeepLevelBCultureID.Text) - 1 };
+                core.AltKeepLevelBSelect(cultures, Double.Parse(textBoxKeepLevelTubeBTime.Text));
+            }
         }
 
         private void buttonFillMediaIntoIBA_Click(object sender, EventArgs e)
@@ -415,12 +396,12 @@ namespace turbido1
 
         private void buttonFillWaterIntoIBA_Click(object sender, EventArgs e)
         {
-            core.FillWaterIntoIBA(Double.Parse(textBoxFillWaterIntoIBATime.Text));
+            core.FillWaterIntoIBAUptoWeight(Double.Parse(textBoxFillWaterIntoIBATime.Text));
         }
 
         private void buttonWaterIntoIBB_Click(object sender, EventArgs e)
         {
-            core.FillWaterIntoIBB(Double.Parse(textBoxFillWaterIntoIBATime.Text));
+            core.FillWaterIntoIBBUptoWeight(Double.Parse(textBoxFillWaterIntoIBATime.Text));
         }
 
         private void checkBoxCalibrateScaleA_CheckedChanged(object sender, EventArgs e)
@@ -592,16 +573,6 @@ namespace turbido1
             library.StopTurbidostat();
         }
 
-        private void buttonBleachWashingProtocolB_Click(object sender, EventArgs e)
-        {
-            library.BleachWashingProtocolB("normal");
-        }
-
-        private void buttonBleachWashingProtocolA_Click(object sender, EventArgs e)
-        {
-            library.BleachWashingProtocolA("normal");
-        }
-
         private void buttonMainWashingProtocolB_Click(object sender, EventArgs e)
         {
             library.MainWashingProtocolB(comboBoxMainWashingProtocolModeB.SelectedItem.ToString());
@@ -610,40 +581,6 @@ namespace turbido1
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
-        }
-
-        private void buttonDiluteTubeA_Click(object sender, EventArgs e)
-        {
-            List <int> over_thr = new List<int>();
-            if (textBoxDiluteTubeACultureID.Text.Contains(":"))
-            {
-                string[] ss = textBoxDiluteTubeACultureID.Text.Split(':');
-                for (int i = Int32.Parse(ss[0]); i <= (Int32.Parse(ss[1])); i++)
-                    over_thr.Add(i-1);
-                core.DiluteTubeA(over_thr, Double.Parse(textBoxDiluteTubeATime.Text));
-            }
-            else
-            {
-                over_thr.Add(Int32.Parse(textBoxDiluteTubeACultureID.Text) - 1);
-                core.DiluteTubeA(over_thr, Double.Parse(textBoxDiluteTubeATime.Text));
-            }
-        }
-
-        private void buttonDiluteTubeB_Click(object sender, EventArgs e)
-        {
-            List<int> over_thr = new List<int>();
-            if (textBoxDiluteTubeBCultureID.Text.Contains(":"))
-            {
-                string[] ss = textBoxDiluteTubeBCultureID.Text.Split(':');
-                for (int i = Int32.Parse(ss[0]); i <= (Int32.Parse(ss[1])); i++)
-                    over_thr.Add(i - 1);
-                core.DiluteTubeB(over_thr, Double.Parse(textBoxDiluteTubeBTime.Text));
-            }
-            else
-            {
-                over_thr.Add(Int32.Parse(textBoxDiluteTubeBCultureID.Text) - 1);
-                core.DiluteTubeB(over_thr, Double.Parse(textBoxDiluteTubeBTime.Text));
-            }
         }
 
         private void buttonMakeBleachIBA_Click(object sender, EventArgs e)
@@ -723,49 +660,9 @@ namespace turbido1
             core.DebubbleTubeBs(5);
         }
 
-        private void buttonAddDrug1IntoIBA_Click(object sender, EventArgs e)
-        {
-            core.AddDrug1IntoIBA(Double.Parse(textBoxAddDrug1IntoIBAGrams.Text));
-        }
-
-        private void buttonAddDrug1IntoIBB_Click(object sender, EventArgs e)
-        {
-            core.AddDrug1IntoIBB(Double.Parse(textBoxAddDrug1IntoIBAGrams.Text));
-        }
-
-        private void buttonAddDrug2IntoIBA_Click(object sender, EventArgs e)
-        {
-            core.AddDrug2IntoIBA(Double.Parse(textBoxAddDrug2IntoIBAGrams.Text));
-        }
-
-        private void buttonAddDrug2IntoIBB_Click(object sender, EventArgs e)
-        {
-            core.AddDrug2IntoIBB(Double.Parse(textBoxAddDrug2IntoIBAGrams.Text));
-        }
-
-        private void buttonAddIPTGIntoIBA_Click(object sender, EventArgs e)
-        {
-            core.AddIPTGIntoIBA(Double.Parse(textBoxAddIPTGIntoIBAGrams.Text));
-        }
-
-        private void buttonAddIPTGIntoIBB_Click(object sender, EventArgs e)
-        {
-            core.AddIPTGIntoIBB(Double.Parse(textBoxAddIPTGIntoIBAGrams.Text));
-        }
-
         private void timerSystem_Tick(object sender, EventArgs e)
         {
             this.labelSystemTime.Text = DateTime.Now.ToLongTimeString();
-        }
-
-        private void buttonSetODA_Click(object sender, EventArgs e)
-        {
-            core.setODA(Double.Parse(textBoxSetOD.Text), Int32.Parse(textBoxSetODCultureID.Text));
-        }
-
-        private void buttonSetODB_Click(object sender, EventArgs e)
-        {
-            core.setODB(Double.Parse(textBoxSetOD.Text), Int32.Parse(textBoxSetODCultureID.Text));
         }
 
         private void radioButtonStartingCultureA_CheckedChanged(object sender, EventArgs e)
@@ -813,6 +710,64 @@ namespace turbido1
             core.FillTubeAsByScale(6);
         }
 
+        private void textBoxLogMain_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxMainWashingProtocolModeB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxFillMediaIntoIBATime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBleachWashingProtocolA_Click_1(object sender, EventArgs e)
+        {
+            library.BleachWashingProtocolA(comboBoxBleachWashingProtocolModeA.SelectedItem.ToString());
+        }
+
+        private void buttonBleachWashingProtocolB_Click_1(object sender, EventArgs e)
+        {
+            library.BleachWashingProtocolB(comboBoxBleachWashingProtocolModeB.SelectedItem.ToString());
+        }
+
+        private void buttonStartWasteIntoSink_Click(object sender, EventArgs e)
+        {
+            core.WasteIntoSink(int.Parse(textBoxWasteIntoSinkDuration.Text));
+        }
+
+        private void buttonPressurizeMediaReservoir_Click(object sender, EventArgs e)
+        {
+            core.PressurizeMediaReservoir(int.Parse(textBoxPressurizeMediaReservoirDuration.Text));
+        }
+
+        private void textBoxKeepLevelTubeBTime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxEvacuateTubeATime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonScalesValues_Click(object sender, EventArgs e)
+        {
+            core.logMain("Current scale values (g)");
+            core.logMain("IBA: " + Math.Round(core.load_sensors.Read()[1],3).ToString());
+            core.logMain("IBB: " + Math.Round(core.load_sensors.Read()[0],3).ToString());
+        }
+
+        private void buttonResetScales_Click(object sender, EventArgs e)
+        {
+            core.logMain("Reconnecting to the scales Phidget interface.");
+
+        }
+
         private void buttonFillTubeAFast_Click(object sender, EventArgs e)
         {
             core.FillTubeAs(Double.Parse(textBoxFillTubeATime.Text));
@@ -827,8 +782,11 @@ namespace turbido1
         {
             if (checkBoxODReader.CheckState == CheckState.Checked)
             {
-                core.DataCollector.Start();
-                core.ReinitializeODReader.Start();
+                if (core.DataCollector.Enabled == false)
+                {
+                    core.DataCollector.Start();
+                    core.ReinitializeODReader.Start();
+                }
             }
             else
             {

@@ -54,19 +54,20 @@ namespace turbido1
         public int[] Drug1ValveToIBA, Drug1ValveToIBB, AirValveToDrug1, AirMixerDrug1;
         public int[] Drug2ValveToIBA, Drug2ValveToIBB, AirValveToDrug2, AirMixerDrug2;
         public int[] IPTGValveToIBA, IPTGValveToIBB, AirValveToIPTG, AirMixerIPTG;
+        public int[] WasteIntoSinkR;
         public int[] LEDPDSwitch;
 
         
         // global parameters
         int safety_waiting = 1;
-        int conc_media_pushback_time = 30; // secs
+        int conc_media_pushback_time = 6; // secs, was 30 with longer tubing
         public int depressurizationTime = 10; // secs
         public int TubePressurizationTime = 2; // secs
         public int IBPressurizationTime = 15; // secs
         int dilutionMixTime = 200; // secs
-        public int keepingLevelTime = 20; // secs
+        public int keepingLevelTime = 30; // secs
         double LBRatio = 9.5;
-        double BleachRatio = 5;
+        double BleachRatio = 9.5;
         public bool simulationMode = false;
 
         // safety parameters
@@ -85,31 +86,30 @@ namespace turbido1
         {
             // relay configuration (see the documentation for details)
             relays = new MCC_Relaybox[] { relaybox1, relaybox2, relaybox3 };
-            ASetThreeWayRelayIDs = new int[,] { { 1, 8 }, { 1, 6 }, { 1, 4 }, { 1, 2 },
-                                              { 0, 13 }, { 0, 15 }, { 0, 17 }, { 0, 19 } };
-            BSetThreeWayRelayIDs = new int[,] { { 1, 7 }, { 1, 5 }, { 1, 3 }, { 1, 1 },
-                                              { 0, 14 }, { 0, 16 }, { 0, 18 }, { 0, 21 } };
-            ASetIsolationValveRelayIDs = new int[,] { { 1, 24 }, { 1, 23 }, { 1, 22 }, { 1, 21 },
-                                                    { 1, 16 }, { 1, 15 }, { 1, 14 }, { 1, 13 } };
-            BSetIsolationValveRelayIDs = new int[,] { { 1, 20 }, { 1, 19 }, { 1, 18 }, { 1, 17 },
-                                                    { 1, 12 }, { 1, 11 }, { 1, 10 }, { 1, 9 } };
-            AirValveToIBA = new int[] { 0, 20 };
-            AirValveToIBB = new int[] { 0, 12 };
-            MediaValveToIBA = new int[] { 0, 1 };
-            MediaValveToIBB = new int[] { 0, 2 };
-            KeepingLevelBlockA = new int[] { 2, 11 };
-            KeepingLevelBlockB = new int[] { 2, 12 };
-            BleachValveToIBA = new int[] { 0, 5 };
-            BleachValveToIBB = new int[] { 0, 6 };
-            AirValveToTubeAs = new int[] { 0, 8 };
-            AirValveToTubeBs = new int[] { 0, 7 };
-            AirValveToMediaRezervoire = new int[] { 0, 22 };
-            //WaterValveToIBA = new int[] { 0, 23 };
-            WaterValveToIBA = new int[] { 2, 8 };
-            WaterValveToIBB = new int[] { 2, 7 };
-            AirMixerA = new int[] { 0, 9 };
-            AirMixerB = new int[] { 0, 10 };
-            AirMixerMedia = new int[] { 0, 11 };
+            ASetThreeWayRelayIDs = new int[,] { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 },
+                                              { 1, 5 }, { 1, 6 }, { 1, 7 }, { 1, 8 } };
+            BSetThreeWayRelayIDs = new int[,] { { 2, 23 }, { 2, 22 }, { 2, 21}, { 2, 20 },
+                                              { 2, 19 }, { 2, 18 }, { 2, 17 }, { 2, 16 } };
+            ASetIsolationValveRelayIDs = new int[,] { { 1, 9 }, { 1, 10 }, { 1, 11 }, { 1, 12 },
+                                                    { 1, 13 }, { 1, 14 }, { 1, 15 }, { 1, 16 } };
+            BSetIsolationValveRelayIDs = new int[,] { { 2, 15 }, { 2, 14 }, { 2, 13 }, { 2, 12 },
+                                                    { 2, 11 }, { 2, 10 }, { 2, 9 }, { 2, 8 } };
+            AirValveToIBA = new int[] { 1, 19 };
+            AirValveToIBB = new int[] { 2, 5 };
+            MediaValveToIBA = new int[] { 0, 19 };
+            MediaValveToIBB = new int[] { 0, 18 };
+            KeepingLevelBlockA = new int[] { 0, 20 }; // WasteA
+            KeepingLevelBlockB = new int[] { 0, 21 }; // WasteB
+            BleachValveToIBA = new int[] { 1, 23 };
+            BleachValveToIBB = new int[] { 2, 1 };
+            AirValveToTubeAs = new int[] { 1, 20 };
+            AirValveToTubeBs = new int[] { 2, 3 };
+            AirValveToMediaRezervoire = new int[] { 2, 4 };
+            WaterValveToIBA = new int[] { 0, 12 };
+            WaterValveToIBB = new int[] { 0, 13 };
+            AirMixerA = new int[] { 1, 18 };
+            AirMixerB = new int[] { 2, 6 };
+            AirMixerMedia = new int[] { 0, 1 };
 
             Drug1ValveToIBA = new int[] { 2, 24 };
             Drug1ValveToIBB = new int[] { 2, 23 };
@@ -123,8 +123,9 @@ namespace turbido1
             IPTGValveToIBB = new int[] { 2, 15 };
             AirMixerIPTG = new int[] { 2, 14 };
             AirValveToIPTG = new int[] { 2, 13 };
+            WasteIntoSinkR = new int[] { 0, 22 };
 
-            LEDPDSwitch = new int[] { 2, 1 }; 
+            LEDPDSwitch = new int[] { 0, 24 }; 
 
             // initialize data arrays
             for (int i = 0; i <= ODReader.HighChan; i++)
@@ -166,7 +167,7 @@ namespace turbido1
             
             ReinitializeODReader = new System.Timers.Timer(3600 * 1000);
             ReinitializeODReader.Elapsed += ReinitializeODReader_Tick;
-            //ReinitializeODReader.Start();
+            //ReinitializeODReader.Start()
         }
 
         public void assignMonitors(ref ODMonitor odm_, ref ScaleMonitor sm_)
@@ -199,6 +200,22 @@ namespace turbido1
             DataCollector.Start();
             //Thread.Sleep(10);
             //DataStreamer.Start();
+        }
+
+        public void ResetScales()
+        {
+            load_sensors = new Phidget_Interface();
+        }
+
+        public void CheckScales()
+        {
+            double start = load_sensors.Read()[1];
+            Thread.Sleep(20);
+            double end = load_sensors.Read()[1];
+            if (start == end)
+            {
+                logMain("***ERROR*** Scales are not responding!");
+            }
         }
 
         public void DataCollector_Tick(object state, ElapsedEventArgs e)
@@ -410,7 +427,7 @@ namespace turbido1
 
         public void logMain(string message)
         {
-            MainLog.Add(new LogEntry() {time=DateTime.Now, message = message});
+            MainLog.Add(new LogEntry() {time=DateTime.Now, message = message + System.Environment.NewLine});
         }
 
         public void DebubbleTubeAs(double ml)
@@ -468,6 +485,7 @@ namespace turbido1
         }
         public void KeepLevelA_worker(double time)
         {
+            logMain("KeepLevelA(time)");
             // turn on keeping level line
             relays[KeepingLevelBlockA[0]].TurnOn(KeepingLevelBlockA[1]);
             // pressurize Tube As
@@ -485,6 +503,7 @@ namespace turbido1
         }
         public void KeepLevelB_worker(double time)
         {
+            logMain("KeepLevelB(time)");
             // turn on keeping level line
             relays[KeepingLevelBlockB[0]].TurnOn(KeepingLevelBlockB[1]);
             // pressurize Tube Bs
@@ -502,6 +521,8 @@ namespace turbido1
         }
         public void AltKeepLevelA_worker(double time)
         {
+            logMain("AltKeepLevelA(time)");
+
             // asynchronous evacuation
             while (isKeepingLevelActiveB)
                 Thread.Sleep(1000);
@@ -536,6 +557,8 @@ namespace turbido1
         }
         public void AltKeepLevelB_worker(double time)
         {
+            logMain("AltKeepLevelB(time)");
+
             // asynchronous evacuation
             while (isKeepingLevelActiveA)
                 Thread.Sleep(1000);
@@ -570,6 +593,8 @@ namespace turbido1
         }
         public void AltKeepLevelASelect_worker(List<int> cultureIDs, double time)
         {
+            logMain("AltKeepLevelASelect(IDs,time)");
+
             // asynchronous evacuation
             while (isKeepingLevelActiveB)
                 Thread.Sleep(1000);
@@ -578,6 +603,7 @@ namespace turbido1
             // change to evacuation line configuration
             foreach (int cID in cultureIDs)
                 relays[ASetThreeWayRelayIDs[cID, 0]].TurnOn(ASetThreeWayRelayIDs[cID, 1]);
+                //logMain("Opened relay "+ ASetThreeWayRelayIDs[cID, 0].ToString() +"."+ ASetThreeWayRelayIDs[cID, 1].ToString());
             //logMain("Culture As are in evacuation mode.");
             // pressurize tube As
             relays[AirValveToTubeAs[0]].TurnOn(AirValveToTubeAs[1]);
@@ -602,6 +628,8 @@ namespace turbido1
         }
         public void AltKeepLevelBSelect_worker(List<int> cultureIDs, double time)
         {
+            logMain("AltKeepLevelBSelect(IDs,time)");
+
             // asynchronous evacuation
             while (isKeepingLevelActiveA)
                 Thread.Sleep(1000);
@@ -610,7 +638,6 @@ namespace turbido1
             // change to evacuation line configuration
             foreach (int cID in cultureIDs)
                 relays[BSetThreeWayRelayIDs[cID, 0]].TurnOn(BSetThreeWayRelayIDs[cID, 1]);
-            //logMain("Culture Bs are in evacuation mode.");
             // pressurize tube Bs
             relays[AirValveToTubeBs[0]].TurnOn(AirValveToTubeBs[1]);
             //logMain("Tube Bs are pressurized.");
@@ -628,12 +655,13 @@ namespace turbido1
             isKeepingLevelActiveB = false;
         }
 
-public void DiluteTubeA(List<int> cultureIDs, double time)
+        public void DiluteTubeA(List<int> cultureIDs, double time)
         {
             (new Thread(() => { DiluteTubeA_worker(cultureIDs, time); })).Start();
         }
         public void DiluteTubeA_worker(List<int> cultureIDs, double time)
         {
+            logMain("DiluteTubeA(IDs,time)");
             KeepLevelA_worker(keepingLevelTime);
             // wait for depressurization
             Thread.Sleep(3000);
@@ -657,6 +685,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void DiluteTubeAByScale_worker(List<int> cultureIDs, double ml)
         {
+            logMain("DiluteTubeAByScale(IDs,ml)");
             relays[AirValveToIBA[0]].TurnOn(AirValveToIBA[1]);
             KeepLevelA_worker(keepingLevelTime);
             if (IBPressurizationTime > keepingLevelTime)
@@ -684,6 +713,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void DiluteTubeBByScale_worker(List<int> cultureIDs, double ml)
         {
+            logMain("DiluteTubeBByScale(IDs,ml)");
             relays[AirValveToIBB[0]].TurnOn(AirValveToIBB[1]);
             KeepLevelB_worker(keepingLevelTime);
             if (IBPressurizationTime > keepingLevelTime)
@@ -711,6 +741,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void SmartDiluteTubeA_worker(List<int> cultureIDs, double target_od)
         {
+            logMain("SmartDiluteTubeA(IDs,target od)");
             relays[AirValveToIBA[0]].TurnOn(AirValveToIBA[1]);
             KeepLevelA_worker(keepingLevelTime);
             if(IBPressurizationTime > keepingLevelTime)
@@ -746,6 +777,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
 
         public void SmartDiluteUpdateRateEstA(int cID, double initial_od, double wait_time)
         {
+            logMain("SmartDiluteUpdateRateEstA(ID,initial,wait time");
             Thread.Sleep(dilutionMixTime*1000);
 
             int channel_id;
@@ -765,6 +797,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void SmartDiluteTubeB_worker(List<int> cultureIDs, double target_od)
         {
+            logMain("SmartDiluteTubeB(IDs,target od)");
             relays[AirValveToIBB[0]].TurnOn(AirValveToIBB[1]);
             KeepLevelB_worker(keepingLevelTime);
             if (IBPressurizationTime > keepingLevelTime)
@@ -800,6 +833,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
 
         public void SmartDiluteUpdateRateEstB(int cID, double initial_od, double wait_time)
         {
+            logMain("SmartDiluteUpdateRateEstB(ID, initial od, wait time)");
             Thread.Sleep(dilutionMixTime * 1000);
 
             int channel_id;
@@ -819,6 +853,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void DiluteTubeB_worker(List<int> cultureIDs, double time)
         {
+            logMain("DiluteTubeB(IDs,time)");
             KeepLevelB_worker(keepingLevelTime);
             // wait for depressurization
             Thread.Sleep(3000);
@@ -845,12 +880,11 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         {
             // pressurize Tube As
             relays[AirValveToTubeAs[0]].TurnOn(AirValveToTubeAs[1]);
-            logMain("Tube As are pressurized.");
+            logMain("PressurizeTubeA(time).");
             // wait for specified time
             Thread.Sleep((Int32)(time * 1000));
             // depressurize Tube As
             relays[AirValveToTubeAs[0]].TurnOff(AirValveToTubeAs[1]);
-            logMain("Tube As are depressurized.");
         }
 
         public void PressurizeTubeB(double time)
@@ -862,12 +896,12 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         {
             // pressurize Tube Bs
             relays[AirValveToTubeBs[0]].TurnOn(AirValveToTubeBs[1]);
-            logMain("Tube Bs are pressurized.");
+            logMain("PressurizeTubeB(time).");
             // wait for specified time
             Thread.Sleep((Int32)(time * 1000));
             // depressurize Tube Bs
             relays[AirValveToTubeBs[0]].TurnOff(AirValveToTubeBs[1]);
-            logMain("Tube Bs are depressurized.");
+            //logMain("Tube Bs are depressurized.");
         }
 
         public void TransferAtoB(double time)
@@ -884,7 +918,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             // open the transfer line
             for (int i = 0; i < 8; i++)
             {
-                //logMain("Transferring culture " + (i+1).ToString() + "...");
+                logMain("TransferAtoB(time): transferring " + (i+1).ToString() + "...");
                 relays[ASetThreeWayRelayIDs[i, 0]].TurnOn(ASetThreeWayRelayIDs[i, 1]);
                 relays[BSetThreeWayRelayIDs[i, 0]].TurnOn(BSetThreeWayRelayIDs[i, 1]);
             }
@@ -926,6 +960,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             // open the transfer lines
             for (int i = 0; i < 8; i++)
             {
+                logMain("TransferBtoA(time): transferring " + (i + 1).ToString() + "...");
                 relays[ASetThreeWayRelayIDs[i, 0]].TurnOn(ASetThreeWayRelayIDs[i, 1]);
                 relays[BSetThreeWayRelayIDs[i, 0]].TurnOn(BSetThreeWayRelayIDs[i, 1]);
             }
@@ -967,7 +1002,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             // open the transfer line
             foreach (int i in culture_ids)
             {
-                logMain("Transferring culture " + (i+1).ToString() + ".");
+                logMain("TransferAtoBSelect(IDs,time): transferring " + (i+1).ToString() + ".");
                 relays[ASetThreeWayRelayIDs[i, 0]].TurnOn(ASetThreeWayRelayIDs[i, 1]);
                 relays[BSetThreeWayRelayIDs[i, 0]].TurnOn(BSetThreeWayRelayIDs[i, 1]);
             
@@ -994,7 +1029,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
 
             foreach (int i in culture_ids)
             {
-                logMain("Transferring culture " + (i + 1).ToString() + ".");
+                logMain("TransferBtoASelect(IDs,time): transferring culture " + (i + 1).ToString() + ".");
                 relays[ASetThreeWayRelayIDs[i, 0]].TurnOn(ASetThreeWayRelayIDs[i, 1]);
                 relays[BSetThreeWayRelayIDs[i, 0]].TurnOn(BSetThreeWayRelayIDs[i, 1]);
                 Thread.Sleep((Int32)(time * 1000));
@@ -1006,13 +1041,14 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             relays[AirValveToTubeAs[0]].TurnOff(AirValveToTubeBs[1]);
         }
 
-
         public void FillTubeA(int cultureID, double time)
         {
             (new Thread(() => FillTubeA_worker(cultureID, time))).Start();
         }
         public void FillTubeA_worker(int cultureID, double time)
         {
+            logMain("FillTubeA("+cultureID.ToString()+","+time.ToString()+")");
+
             // pressurize IBA
             relays[AirValveToIBA[0]].TurnOn(AirValveToIBA[1]);
             // wait pressure to be stabilized
@@ -1036,6 +1072,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void FillTubeAs_worker(double time)
         {
+            logMain("FillTubeAs("+ time.ToString() + ")");
+
             // pressurize IBA
             relays[AirValveToIBA[0]].TurnOn(AirValveToIBA[1]);
             // wait pressure to be stabilized
@@ -1044,14 +1082,14 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             // open the isolation valves
             for (int i = 0; i < 8; i++)
                 relays[ASetIsolationValveRelayIDs[i, 0]].TurnOn(ASetIsolationValveRelayIDs[i, 1]);
-            logMain("IBA is pressurized.");
-            logMain("Tube As are filling.");
+            //logMain("IBA is pressurized.");
+            //logMain("Tube As are filling.");
 
             Thread.Sleep((Int32)(time * 1000));
 
             // depressurize IBA
             relays[AirValveToIBA[0]].TurnOff(AirValveToIBA[1]);
-            logMain("IBA is depressurized.");
+            //logMain("IBA is depressurized.");
             // close the isolation valves
             for (int i = 0; i < 8; i++)
                 relays[ASetIsolationValveRelayIDs[i, 0]].TurnOff(ASetIsolationValveRelayIDs[i, 1]);
@@ -1063,6 +1101,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void FillTubeAsByScale_worker(double ml)
         {
+            logMain("FillTubeAsByScale(" + ml.ToString() + ")");
+
             // pressurize IBA
             relays[AirValveToIBA[0]].TurnOn(AirValveToIBA[1]);
             // wait pressure to be stabilized
@@ -1087,9 +1127,9 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
 
                 // if IBs are emptied skip filling rest of the tubes
                 if (sw.ElapsedMilliseconds >= safetyMaxSecondsDilutionAllowed * 1000)
-                    this.logMain("Maximum dilution duration is exceeded for culture " + i.ToString() + "A");
+                    this.logMain("Maximum dilution duration is exceeded for culture " + (i+1).ToString() + "A");
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
             }
             // depressurize IBA
             relays[AirValveToIBA[0]].TurnOff(AirValveToIBA[1]); 
@@ -1102,6 +1142,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         public void FillTubeAsByScale_worker(List<int> cultureIDs,
                      double ml, bool pre_pressurized=false)
         {
+            logMain("FillTubeAsByScale(cultureIDs," + ml.ToString() + ")");
+
             if (pre_pressurized == false)
             {
                 // pressurize IBA
@@ -1121,19 +1163,20 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
                 sw.Start();
                 while (Math.Abs(start - end) < ml && sw.ElapsedMilliseconds < safetyMaxSecondsDilutionAllowed*1000)
                 {
+                    Thread.Sleep(10); //was 10
                     end = load_sensors.Read()[1];
-                    Thread.Sleep(10);
                 }
+                this.logMain((i+1).ToString() + "A: " + Math.Round(start - end,3).ToString() + "ml (" + Math.Round(start,3).ToString() + "-" + Math.Round(end,3).ToString() + ")");
 
                 // close the isolation valve
                 relays[ASetIsolationValveRelayIDs[i, 0]].TurnOff(ASetIsolationValveRelayIDs[i, 1]);
 
                 // if IBs are emptied skip filling rest of the tubes
                 if (sw.ElapsedMilliseconds >= safetyMaxSecondsDilutionAllowed * 1000)
-                    this.logMain("Maximum dilution duration is exceeded for culture " + i.ToString() + "A");
+                    this.logMain("Maximum dilution duration is exceeded for culture " + (i+1).ToString() + "A");
                     //break;
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
             }
             // push out the liquid accumulated inside the filters
             relays[AirValveToTubeAs[0]].TurnOn(AirValveToTubeAs[1]);
@@ -1153,6 +1196,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void FillTubeB_worker(int cultureID, double time)
         {
+            logMain("FillTubeB(ID" + (cultureID + 1).ToString() +","+ time.ToString() +")");
+
             // pressurize IBB
             relays[AirValveToIBB[0]].TurnOn(AirValveToIBB[1]);
             // wait pressure to be stabilized
@@ -1176,6 +1221,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void FillTubeBsByScale_worker(double ml)
         {
+            logMain("FillTubeBsByScale("+ml.ToString()+")");
+
             // pressurize IBB
             relays[AirValveToIBB[0]].TurnOn(AirValveToIBB[1]);
             // wait pressure to be stabilized
@@ -1195,12 +1242,14 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
                     end = load_sensors.Read()[0];
                     Thread.Sleep(10);
                 }
+                this.logMain((i + 1).ToString() + "B: " + Math.Round(start - end, 3).ToString() + "ml (" + Math.Round(start, 3).ToString() + "-" + Math.Round(end, 3).ToString() + ")");
+
                 // close the isolation valve
                 relays[BSetIsolationValveRelayIDs[i, 0]].TurnOff(BSetIsolationValveRelayIDs[i, 1]);
 
                 // if IBs are emptied skip filling rest of the tubes
                 if (sw.ElapsedMilliseconds >= safetyMaxSecondsDilutionAllowed * 1000)
-                    this.logMain("Maximum dilution duration is exceeded for culture " + i.ToString() + "B");
+                    this.logMain("Maximum dilution duration is exceeded for culture " + (i+1).ToString() + "B");
 
                 Thread.Sleep(1000);
             }
@@ -1215,6 +1264,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         public void FillTubeBsByScale_worker(List<int> cultureIDs,
                     double ml, bool pre_pressurized=false)
         {
+            logMain("FillTubeBsByScale(cultureIDs,"+ml.ToString()+",pp)");
+
             if (pre_pressurized == false)
             {
                 // pressurize IBB
@@ -1238,13 +1289,13 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
                     end = load_sensors.Read()[0];
                     Thread.Sleep(10);
                 }
-
+                this.logMain((i + 1).ToString() + "B: " + Math.Round(start - end, 3).ToString() + "ml (" + Math.Round(start, 3).ToString() + "-" + Math.Round(end, 3).ToString() + ")");
                 // close the isolation valve
                 relays[BSetIsolationValveRelayIDs[i, 0]].TurnOff(BSetIsolationValveRelayIDs[i, 1]);
 
                 // if IBs are emptied skip filling rest of the tubes
                 if (sw.ElapsedMilliseconds >= safetyMaxSecondsDilutionAllowed * 1000)
-                    this.logMain("Maximum dilution duration is exceeded for culture " + i.ToString() + "B");
+                    this.logMain("Maximum dilution duration is exceeded for culture " + (i+1).ToString() + "B");
                     //break;
                 Thread.Sleep(1000);
             }
@@ -1266,6 +1317,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void FillTubeBs_worker(double time)
         {
+            logMain("FillTubeBs(" + time.ToString() + ")");
+
             // pressurize IBB
             relays[AirValveToIBB[0]].TurnOn(AirValveToIBB[1]);
             // wait pressure to be stabilized
@@ -1274,14 +1327,14 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             for (int i = 0; i < 8; i++)
                 relays[BSetIsolationValveRelayIDs[i, 0]].TurnOn(BSetIsolationValveRelayIDs[i, 1]);
 
-            logMain("IBB is pressurized.");
-            logMain("Tube Bs are filling.");
+            //logMain("IBB is pressurized.");
+            //logMain("Tube Bs are filling.");
 
             Thread.Sleep((Int32)(time * 1000));
 
             // depressurize IBB
             relays[AirValveToIBB[0]].TurnOff(AirValveToIBB[1]);
-            logMain("IBB is depressurized.");
+            //logMain("IBB is depressurized.");
             // close the isolation valves
             for (int i = 0; i < 8; i++)
                 relays[BSetIsolationValveRelayIDs[i, 0]].TurnOff(BSetIsolationValveRelayIDs[i, 1]);
@@ -1298,11 +1351,10 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
 
             // change to evacuation line configuration
             relays[ASetThreeWayRelayIDs[cultureID, 0]].TurnOn(ASetThreeWayRelayIDs[cultureID, 1]);
-            //logMain("Culture " + (cultureID + 1).ToString() + "A is in evacuation mode.");
+            logMain("EvacuateTubeA(id,time): " + (cultureID + 1).ToString());
             // pressurize tube As
             relays[AirValveToTubeAs[0]].TurnOn(AirValveToTubeAs[1]);
             //logMain("Tube As are pressurized.");
-
             Thread.Sleep((Int32)((time) * 1000));
 
             // depressurize tube As
@@ -1319,7 +1371,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void AltEvacuateTubeAs_worker(double time)
         {
-     
+            logMain("AltEvacuateTubeAs(time)");
+
             // pressurize Tube As
             relays[AirValveToTubeAs[0]].TurnOn(AirValveToTubeAs[1]);
             Thread.Sleep((Int32)(TubePressurizationTime * 1000));
@@ -1340,6 +1393,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void AltEvacuateTubeBs_worker(double time)
         {
+            logMain("AltEvacuateTubeBs(time).");
+
             // pressurize Tube Bs
             relays[AirValveToTubeBs[0]].TurnOn(AirValveToTubeBs[1]);
             Thread.Sleep((Int32)(TubePressurizationTime * 1000));
@@ -1347,6 +1402,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             relays[KeepingLevelBlockB[0]].TurnOn(KeepingLevelBlockB[1]);
         
             Thread.Sleep((Int32)(time * 1000));
+
             // turn off keeping level line
             relays[KeepingLevelBlockB[0]].TurnOff(KeepingLevelBlockB[1]);
             // depressurize Tube Bs
@@ -1359,13 +1415,13 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void EvacuateTubeAs_worker(double time)
         {
+            logMain("EvacuateTubeAs(time)");
             // first go through the keeping level line
             KeepLevelA_worker(3);
 
             // change to evacuation line configuration
             for (int i = 0; i < 8; i++)
                 relays[ASetThreeWayRelayIDs[i, 0]].TurnOn(ASetThreeWayRelayIDs[i, 1]);
-            //logMain("Culture As are in evacuation mode.");
             // pressurize tube As
             relays[AirValveToTubeAs[0]].TurnOn(AirValveToTubeAs[1]);
             //logMain("Tube As are pressurized.");
@@ -1387,6 +1443,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void EvacuateTubeB_worker(int cultureID, double time)
         {
+            logMain("EvacuateTubeB(id,time): " + (cultureID + 1).ToString());
             // first go through the keeping level line
             KeepLevelB_worker(5);
 
@@ -1413,12 +1470,12 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void EvacuateTubeBs_worker(double time)
         {
+            logMain("EvacuateTubeBs(time)");
             // first go through the keeping level line
             KeepLevelB_worker(5);
             // change to evacuation configuration
             for (int i = 0; i < 8; i++)
                 relays[BSetThreeWayRelayIDs[i, 0]].TurnOn(BSetThreeWayRelayIDs[i, 1]);
-            //logMain("Culture Bs are in evacuation mode.");
             // pressurize tube Bs
             relays[AirValveToTubeBs[0]].TurnOn(AirValveToTubeBs[1]);
             //logMain("Tube Bs are pressurized.");
@@ -1480,7 +1537,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             double blank_bottle_weight = load_sensors.Read()[1];
             // open water valve to IBA
             relays[WaterValveToIBA[0]].TurnOn(WaterValveToIBA[1]);
-            //logMain("Water is flowing to IBA.");
+            logMain("FillWaterIntoIBA(" + amount.ToString() + ")");
+
             // wait until enough water has landed
             double rtw = load_sensors.Read()[1];
             while ((rtw - blank_bottle_weight) < amount || Double.IsInfinity(rtw)
@@ -1499,18 +1557,26 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void FillWaterIntoIBAUptoWeight_worker(double total_amount)
         {
+            logMain("FillWaterIntoIBAUptoWeight("+ total_amount.ToString() +")");
             // open water valve to IBA
             relays[WaterValveToIBA[0]].TurnOn(WaterValveToIBA[1]);
             // wait for the specified time
-            Double last_value = load_sensors.Read()[1];
-            while (last_value < total_amount || Double.IsInfinity(last_value)
+
+            Double init_value = load_sensors.Read()[1];
+            Double last_value = init_value;
+            while (last_value-init_value < total_amount || Double.IsInfinity(last_value)
                                              || Double.IsNaN(last_value))
             {
+                //relays[WaterValveToIBA[0]].TurnOn(WaterValveToIBA[1]);
                 Thread.Sleep(100);
                 last_value = load_sensors.Read()[1];
             }
             // close water valve to IBA
             relays[WaterValveToIBA[0]].TurnOff(WaterValveToIBA[1]);
+            Thread.Sleep(100);
+            relays[WaterValveToIBA[0]].TurnOff(WaterValveToIBA[1]);
+
+
         }
 
         public void FillWaterIntoIBB(double time)
@@ -1520,6 +1586,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void FillWaterIntoIBB_worker(double amount)
         {
+            logMain("FillWaterIntoIBB(" + amount.ToString() + ")");
             double blank_bottle_weight = load_sensors.Read()[0];
             // open water valve to IBA
             relays[WaterValveToIBB[0]].TurnOn(WaterValveToIBB[1]);
@@ -1542,17 +1609,22 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void FillWaterIntoIBBUptoWeight_worker(double total_amount)
         {
+            logMain("FillWaterIntoIBBUptoWeight(" + total_amount.ToString() + ")");
             // open water valve to IBB
-            relays[WaterValveToIBB[0]].TurnOn(WaterValveToIBB[1]);
+            this.relays[WaterValveToIBB[0]].TurnOn(WaterValveToIBB[1]);
             // wait for the specified time
-            Double last_value=load_sensors.Read()[0];
-            while (last_value < total_amount || Double.IsInfinity(last_value)
+            Double init_value=load_sensors.Read()[0];
+            Double last_value = init_value;
+            while (last_value-init_value < total_amount || Double.IsInfinity(last_value)
                                              || Double.IsNaN(last_value))
             {
+                //relays[WaterValveToIBB[0]].TurnOn(WaterValveToIBB[1]);
                 Thread.Sleep(100);
                 last_value = load_sensors.Read()[0];
             }
             // close water valve to IBB
+            relays[WaterValveToIBB[0]].TurnOff(WaterValveToIBB[1]);
+            Thread.Sleep(100);
             relays[WaterValveToIBB[0]].TurnOff(WaterValveToIBB[1]);
         }
 
@@ -1563,6 +1635,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void FillMediaIntoIBA_worker(double time)
         {
+            logMain("FillMediaIntoIBA("+time.ToString()+")");
             // open media valve to IBA
             relays[AirValveToMediaRezervoire[0]].TurnOn(AirValveToMediaRezervoire[1]);
             relays[MediaValveToIBA[0]].TurnOn(MediaValveToIBA[1]);
@@ -1571,6 +1644,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             // push media in tubings back
             relays[AirValveToMediaRezervoire[0]].TurnOff(AirValveToMediaRezervoire[1]);
             relays[AirValveToIBA[0]].TurnOn(AirValveToIBA[1]);
+            relays[MediaValveToIBA[0]].TurnOn(MediaValveToIBA[1]);
             logMain("Pushing back the LB in the tubings.");
             Thread.Sleep(conc_media_pushback_time * 1000);
             relays[AirValveToIBA[0]].TurnOff(AirValveToIBA[1]);
@@ -1586,6 +1660,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void FillMediaIntoIBB_worker(double time)
         {
+            logMain("FillMediaIntoIBB(" + time.ToString() + ")");
             relays[AirValveToMediaRezervoire[0]].TurnOn(AirValveToMediaRezervoire[1]);
             // open water valve to IBB
             relays[MediaValveToIBB[0]].TurnOn(MediaValveToIBB[1]);
@@ -1594,7 +1669,8 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             // push media in tubings back
             relays[AirValveToMediaRezervoire[0]].TurnOff(AirValveToMediaRezervoire[1]);
             relays[AirValveToIBB[0]].TurnOn(AirValveToIBB[1]);
-            //logMain("Pushing back the LB in the tubings.");
+            relays[MediaValveToIBB[0]].TurnOn(MediaValveToIBB[1]);
+            logMain("Pushing back the LB in the tubings.");
             Thread.Sleep(conc_media_pushback_time * 1000);
             relays[AirValveToIBB[0]].TurnOff(AirValveToIBB[1]);
             // close media valve to IBB
@@ -1768,6 +1844,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void WashTubeA_worker(int cultureID, double time)
         {
+            logMain("WashTubeA(ID,time)");
             FillTubeA_worker(cultureID, time);
             Thread.Sleep((Int32)(safety_waiting) * 1000);
             EvacuateTubeA_worker(cultureID, time);
@@ -1779,6 +1856,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void WashTubeAs_worker(double time, double waiting_time)
         {
+            logMain("WashTubeAs(time,waiting time)");
             FillTubeAs_worker(time);
             Thread.Sleep((Int32)(waiting_time * 1000));
             EvacuateTubeAs_worker(time+15);
@@ -1790,6 +1868,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void WashTubeB_worker(int cultureID, double time)
         {
+            logMain("WashTubeB(ID,time)");
             FillTubeB_worker(cultureID, time);
             Thread.Sleep((Int32)(safety_waiting) * 1000);
             EvacuateTubeB_worker(cultureID, time);
@@ -1801,6 +1880,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void WashTubeBs_worker(double time, double waiting_time)
         {
+            logMain("WashTubeBs(time, waiting time)");
             FillTubeBs_worker(time);
             Thread.Sleep((Int32)(waiting_time * 1000));
             EvacuateTubeBs_worker(time+15);
@@ -1825,6 +1905,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void MakeLBA_worker(double total_amount)
         {
+            logMain("MakeLBA(" + total_amount.ToString() + ")");
             library.mediaAirationAllowed = false;
             
             // action
@@ -1840,11 +1921,13 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             while ((rtw - blank_bottle_weight) < water_limit || Double.IsInfinity(rtw)
                                                              || Double.IsNaN(rtw) )
             {
+                //relays[WaterValveToIBA[0]].TurnOn(WaterValveToIBA[1]);
                 Thread.Sleep(50);
                 rtw = load_sensors.Read()[1];
             }
             // close water valve to IBA
             relays[WaterValveToIBA[0]].TurnOff(WaterValveToIBA[1]);
+
             // wait until water is comletelely off
             Thread.Sleep(10000);
             //logMain("Water flow to IBA is stopped.");
@@ -1886,6 +1969,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void MakeLBB_worker(double total_amount)
         {
+            logMain("MakeLBB("+ total_amount.ToString() +")");
             library.mediaAirationAllowed = false;
             // action
             double ratio = LBRatio;
@@ -1900,6 +1984,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             while ((last_val - blank_bottle_weight) < water_limit
                    || Double.IsInfinity(last_val) || Double.IsNaN(last_val))
             {
+                //relays[WaterValveToIBB[0]].TurnOn(WaterValveToIBB[1]);
                 Thread.Sleep(50);
                 last_val = load_sensors.Read()[0];
             } 
@@ -1946,6 +2031,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void MakeBleachA_worker(double total_amount)
         {
+            logMain("MakeBleachA(total amount)");
             library.mediaAirationAllowed = false;
             // action
             double ratio = BleachRatio;
@@ -1959,6 +2045,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             while ((rtw - blank_bottle_weight) < total_amount * (ratio-1) / ratio
                     || Double.IsInfinity(rtw) || Double.IsNaN(rtw))
             {
+                //relays[WaterValveToIBA[0]].TurnOn(WaterValveToIBA[1]);
                 Thread.Sleep(50);
                 rtw = load_sensors.Read()[1];
             }
@@ -1972,7 +2059,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
 
             // open bleach valve to IBA
             relays[BleachValveToIBA[0]].TurnOn(BleachValveToIBA[1]);
-            logMain("Bleach is flowing to IBA.");
+            //logMain("Bleach is flowing to IBA.");
             // wait until enough bleach has landed
             Double last_val = load_sensors.Read()[1];
             while ((last_val - blank_bottle_weight) < water_added * ratio / (ratio - 1)
@@ -1984,8 +2071,9 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             // close bleach valve
             relays[BleachValveToIBA[0]].TurnOff(BleachValveToIBA[1]);
             logMain("[Bleach Making A] Concentrated Bleach amount: " + (load_sensors.Read()[1] - rtw).ToString() + " gr");
-            library.mediaAirationAllowed = true;
+
             AirMixIBA_worker(15);
+            library.mediaAirationAllowed = true;
         }
 
         public void MakeBleachB(double total_amount)
@@ -1995,19 +2083,23 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void MakeBleachB_worker(double total_amount)
         {
+            logMain("MakeBleachB(total amount)");
             library.mediaAirationAllowed = false;
+
             // action
             double ratio = BleachRatio;
             double blank_bottle_weight = load_sensors.Read()[0];
             
             // open water valve to IBA
             relays[WaterValveToIBB[0]].TurnOn(WaterValveToIBB[1]);
+
             //logMain("Water is flowing to IBB.");
             // wait until enough water has landed
             Double rtw = load_sensors.Read()[0];
             while ((rtw - blank_bottle_weight) < total_amount *(ratio-1) / ratio
                     || Double.IsInfinity(rtw) || Double.IsNaN(rtw) )
             {
+                //relays[WaterValveToIBB[0]].TurnOn(WaterValveToIBB[1]);
                 Thread.Sleep(50);
                 rtw = load_sensors.Read()[0];
             }
@@ -2020,7 +2112,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             logMain("[Bleach Making A] Water amount: " + water_added.ToString() + " gr");
             // open bleach valve to IBA
             relays[BleachValveToIBB[0]].TurnOn(BleachValveToIBB[1]);
-            logMain("Bleach is flowing to IBB.");
+            //logMain("Bleach is flowing to IBB.");
             // wait until enough bleach has landed
             Double last_val = load_sensors.Read()[0];
             while ((last_val - blank_bottle_weight) < water_added * ratio / (ratio-1)
@@ -2032,8 +2124,10 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             // close bleach valve
             relays[BleachValveToIBB[0]].TurnOff(BleachValveToIBB[1]);
             logMain("[Bleach Making B] Concentrated Bleach amount: " + (load_sensors.Read()[0] - rtw).ToString() + " gr");
-            library.mediaAirationAllowed = true;
+
+
             AirMixIBB_worker(15);
+            library.mediaAirationAllowed = true;
         }
 
         public void setODA(double set_od_level, int culture_id)
@@ -2193,7 +2287,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void quickWasteIBA_worker()
         {
-            //logMain("IBA is quick wasting.");
+            logMain("quickWasteIBA()");
             relays[AirValveToIBA[0]].TurnOn(AirValveToIBA[1]);
             for (int i = 0; i < 8; i++)
             {
@@ -2231,7 +2325,7 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
         }
         public void quickWasteIBB_worker()
         {
-            //logMain("IBB is quick wasting.");
+            logMain("quickWasteIBB()");
             relays[AirValveToIBB[0]].TurnOn(AirValveToIBB[1]);
             for (int i = 0; i < 8; i++)
             {
@@ -2440,9 +2534,37 @@ public void DiluteTubeA(List<int> cultureIDs, double time)
             // close media valve
             relays[IPTGValveToIBB[0]].TurnOff(IPTGValveToIBB[1]);
         }
+
+        public void WasteIntoSink(int duration)
+        {
+            logMain("WasteIntoSink(duration)");
+            (new Thread(() => WasteIntoSink_worker(duration))).Start();
+        }
+
+        public void WasteIntoSink_worker(int duration)
+        {
+            relays[WasteIntoSinkR[0]].TurnOn(WasteIntoSinkR[1]);
+            logMain("Waste into sink is on.");
+            Thread.Sleep(duration * 60* 1000);
+            relays[WasteIntoSinkR[0]].TurnOff(WasteIntoSinkR[1]);
+            logMain("Waste into sink is off.");
+        }
+        public void PressurizeMediaReservoir(int duration)
+        {
+            (new Thread(() => PressurizeMediaReservoir_worker(duration))).Start();
+        }
+
+        public void PressurizeMediaReservoir_worker(int duration)
+        {
+            relays[AirValveToMediaRezervoire[0]].TurnOn(AirValveToMediaRezervoire[1]);
+            logMain("Media reservoir is pressurized.");
+            Thread.Sleep(duration * 60 * 1000);
+            relays[AirValveToMediaRezervoire[0]].TurnOff(AirValveToMediaRezervoire[1]);
+            logMain("Media reservoir is depressurized.");
+        }
     }
 
-    public class CalibrationFile
+public class CalibrationFile
     {
         public string Name { get; set; }
         public string Path { get; set; }
